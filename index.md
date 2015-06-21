@@ -1,4 +1,6 @@
 ---
+title: avanpo
+home: active
 ---
 
 ## Blog Posts

@@ -30,8 +30,7 @@ body {
   color: #444;
   font-size: 14pt;
   text-rendering: optimizeLegibility;
-  background: #f9f9f9;
-  border-top: 20px solid #f3f3f3;
+  background: #eee;
 }
 
 /* links */
@@ -46,13 +45,12 @@ a:hover {
   background-color: #f90;
 }
 
-/* layout */
+/* header */
 
-header {
-  width: 700px;
+nav {
+  width: 640px;
   margin: 0 auto;
-  padding: 30px 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 30px 40px;
 }
 
 nav ul li {
@@ -61,7 +59,8 @@ nav ul li {
 }
 
 nav ul li a {
-  font-size: 18pt;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16pt;
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -76,25 +75,34 @@ nav ul li.active a, nav ul li a:hover {
   background-color: transparent;
 }
 
-div.content {
-  width: 700px;
-  margin: 30px auto;
+header.banner {
+  color: #fff;
+  background: #00bfff url(/img/header.png) repeat-x bottom left;
 }
+
+header.banner h1 {
+  width: 640px;
+  margin: 0 auto;
+  padding: 0 40px;
+  font-size: 38pt;
+}
+
+/* footer */
 
 footer {
   padding: 30px 0;
   text-align: center;
   color: #aaa;
-  background: #f3f3f3;
+  background: #eee;
 }
 
 footer p {
-  width: 700px;
+  width: 720px;
   margin: 0 auto;
 }
 
 footer ul.icons {
-  width: 700px;
+  width: 720px;
   margin: 1em auto 0 auto;
 }
 
@@ -118,9 +126,22 @@ footer ul.icons li a:hover img {
 
 /* content */
 
+div.content {
+  width: 640px;
+  margin: 0 auto;
+  padding: 40px 40px 1px 40px;
+  background: #fff;
+}
+
 div.content h1 {
-  margin: 0 0 5px 0;
-  font-size: 34pt;
+  margin: 0;
+  font-size: 38pt;
+}
+
+div.content p.date {
+  font-size: 11pt;
+  text-transform: uppercase;
+  color: #aaa;
 }
 
 div.content h2 {
@@ -139,13 +160,6 @@ div.content ul li {
 
 div.content ol li {
   list-style: decimal;
-}
-
-div.content p.date {
-  margin: 0 0 30px 0;
-  font-size: 12pt;
-  text-transform: uppercase;
-  color: #aaa;
 }
 
 div.content span.date {
