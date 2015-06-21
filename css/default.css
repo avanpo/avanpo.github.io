@@ -1,0 +1,154 @@
+/* resets */
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* general styling */
+
+body {
+  font-family: "Georgia", serif;
+  color: #444;
+  font-size: 14pt;
+  text-rendering: optimizeLegibility;
+  background: #f9f9f9;
+  border-top: 20px solid #f3f3f3;
+}
+
+/* links */
+
+a:link, a:visited {
+  color: #f90;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fff;
+  background-color: #f90;
+}
+
+/* layout */
+
+header {
+  width: 700px;
+  margin: 0 auto;
+  padding: 30px 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 40px 0 0;
+}
+
+nav ul li a {
+  font-size: 18pt;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+nav ul li a:link, nav ul li a:visited {
+  color: #aaa;
+}
+
+nav ul li.active a, nav ul li a:hover {
+  color: #444;
+  background-color: transparent;
+}
+
+div.content {
+  width: 700px;
+  margin: 30px auto;
+}
+
+footer {
+  padding: 30px 0;
+  text-align: center;
+  color: #aaa;
+  background: #f3f3f3;
+}
+
+footer p {
+  width: 700px;
+  margin: 0 auto;
+}
+
+footer ul.icons {
+  width: 700px;
+  margin: 1em auto 0 auto;
+}
+
+footer ul.icons li {
+  display: inline;
+  margin: 0 15px;
+}
+
+footer ul.icons li a:hover {
+  background: transparent;
+}
+
+footer ul.icons li a img {
+  width: 32px;
+  opacity: 0.3;
+}
+
+footer ul.icons li a:hover img {
+  opacity: 0.6;
+}
+
+/* content */
+
+div.content h1 {
+  margin: 0 0 5px 0;
+  font-size: 34pt;
+}
+
+div.content h2 {
+  margin: 0 0 0.5em 0;
+  font-size: 28pt;
+}
+
+div.content p, div.content ul, div.content ol {
+  margin: 0 0 2em 0;
+}
+
+div.content ul li {
+  margin: 0 0 0 40px;
+  list-style: disc;
+}
+
+div.content ol li {
+  list-style: decimal;
+}
+
+div.content p.date {
+  margin: 0 0 30px 0;
+  font-size: 12pt;
+  text-transform: uppercase;
+  color: #aaa;
+}
+
+div.content span.date {
+  text-transform: uppercase;
+  color: #aaa;
+}
