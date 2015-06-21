@@ -1,3 +1,5 @@
+highlighter: pygments
+
 defaults:
   -
     scope:
