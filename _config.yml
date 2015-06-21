@@ -9,6 +9,7 @@ defaults:
       layout: "post"
       author: "Alex"
       title: "null"
+      archives: "active"
   -
     scope:
       path: ""

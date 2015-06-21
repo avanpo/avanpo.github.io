@@ -36,13 +36,15 @@ body {
 /* links */
 
 a:link, a:visited {
-  color: #f90;
+  margin: 0 -2px;
+  padding: 0 2px;
+  color: #0be;
   text-decoration: none;
 }
 
 a:hover {
   color: #fff;
-  background-color: #f90;
+  background-color: #0be;
 }
 
 /* header */
@@ -129,16 +131,17 @@ footer ul.icons li a:hover img {
 div.content {
   width: 640px;
   margin: 0 auto;
-  padding: 40px 40px 1px 40px;
+  padding: 40px 40px 20px 40px;
   background: #fff;
 }
 
 div.content h1 {
-  margin: 0;
+  margin: 0 0 0.5em 0;
   font-size: 38pt;
 }
 
 div.content p.date {
+  margin: -1em 0 2em 0;
   font-size: 11pt;
   text-transform: uppercase;
   color: #aaa;
@@ -150,7 +153,7 @@ div.content h2 {
 }
 
 div.content p, div.content ul, div.content ol {
-  margin: 0 0 2em 0;
+  margin: 0 0 1em 0;
 }
 
 div.content ul li {
