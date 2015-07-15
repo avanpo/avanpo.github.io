@@ -31,7 +31,7 @@ $$ X\_i(t) = V\_i(t) + X\_i(t-1) $$
 
 The variables are defined as follows.
 
-* \\( w(t) \\) is called the inertial weight, as it controls how easily a particle's current trajectory is changed
+* \\( w(t) \\) is called the inertia weight, as it controls how easily a particle's current trajectory is changed
 * \\( X\_i^L \\) is the particle's best known position
 * \\( X^G \\) is the swarm's (or a sub-swarm's) best known position
 * \\( r\_1, r\_2 \\) are uniformly distributed random numbers between 0 and 1
@@ -49,4 +49,4 @@ The basic PSO is sensitive to the coordinate system, so it is biased to solution
 
 In a practical scenario, it probably isn't the first algorithm I would try. A better approach is to start simple. First I would try a hill climber, then a simple metaheuristic like simulated annealing, and only after that consider a population-based algorithm like PSO.
 
-However, it is unclear whether it will yield better results than more popular population-based metaheuristics like genetic algoriths. Regardless, the technique has garnered enough interest to effect a significant amount of research.
+However, it is unclear whether it will yield better results than more popular population-based metaheuristics like genetic algorithms. Regardless, the technique has garnered enough interest to effect a significant amount of research.
