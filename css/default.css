@@ -28,7 +28,7 @@ table {
 body {
   font-family: "Georgia", serif;
   color: #444;
-  font-size: 14pt;
+  font-size: 13pt;
   text-rendering: optimizeLegibility;
   background: #eee;
 }
@@ -137,7 +137,7 @@ div.content {
 
 div.content h1 {
   margin: 0 0 0.5em 0;
-  font-size: 38pt;
+  font-size: 36pt;
 }
 
 div.content p.date {
@@ -149,7 +149,7 @@ div.content p.date {
 
 div.content h2 {
   margin: 0 0 0.5em 0;
-  font-size: 28pt;
+  font-size: 26pt;
 }
 
 div.content p, div.content ul, div.content ol {
@@ -157,7 +157,7 @@ div.content p, div.content ul, div.content ol {
 }
 
 div.content ul li {
-  margin: 0 0 0 40px;
+  margin: 0 0 4px 40px;
   list-style: disc;
 }
 
