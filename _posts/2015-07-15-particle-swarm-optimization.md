@@ -49,4 +49,4 @@ The basic PSO is sensitive to the coordinate system, so it is biased to solution
 
 In a practical scenario, it probably isn't the first algorithm I would try. A better approach is to start simple. First I would try a hill climber, then a simple metaheuristic like simulated annealing, and only after that consider a population-based algorithm like PSO.
 
-However, it is unclear whether it will yield better results than more popular population-based metaheuristics like genetic algorithms. Regardless, the technique has garnered enough interest to effect a significant amount of research.
+It is unclear whether PSO will yield better results than more popular population-based metaheuristics like genetic algorithms. Regardless, the technique has garnered enough interest to effect a significant amount of research.

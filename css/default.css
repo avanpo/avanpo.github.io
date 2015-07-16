@@ -47,6 +47,17 @@ a:hover {
   background-color: #0be;
 }
 
+div.content h1 a:link, div.content h1 a:visited {
+  margin: 0;
+  padding: 0;
+  color: #444;
+}
+
+div.content h1 a:hover {
+  color: #fff;
+  background-color: #444;
+}
+
 /* header */
 
 nav {
@@ -135,21 +146,26 @@ div.content {
   background: #fff;
 }
 
-div.content h1 {
-  margin: 0 0 0.5em 0;
-  font-size: 36pt;
-}
-
 div.content p.date {
-  margin: -1em 0 2em 0;
+  margin: 0 0 4px 0;
   font-size: 11pt;
   text-transform: uppercase;
   color: #aaa;
 }
 
+div.content h1 {
+  margin: 0 0 0.5em 0;
+  font-size: 36pt;
+}
+
 div.content h2 {
   margin: 0 0 0.5em 0;
   font-size: 26pt;
+}
+
+div.content h3 {
+  margin: 0 0 0.5em 0;
+  font-size: 16pt;
 }
 
 div.content p, div.content ul, div.content ol {
