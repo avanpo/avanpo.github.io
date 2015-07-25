@@ -3,4 +3,10 @@ title: "about :: avanpo"
 about: active
 ---
 
-This page is still under construction.
+# About
+
+Hi, my name is Alex. This is where I write about things that interest me, and things that I learn.
+
+Sometimes I write an article here because I think it might be useful to someone. Other times, it's just a place to post text I don't have a better place for. Usually, I write articles as a means to better understand a concept or technique.
+
+If you're looking for more information about me, you might try my personal page, <a href="http://alexvp.com">alexvp.com</a>. You can also contact me at avanpoppelen at gmail dot com.
