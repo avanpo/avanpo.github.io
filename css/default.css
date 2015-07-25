@@ -170,6 +170,7 @@ div.content h3 {
 
 div.content p, div.content ul, div.content ol {
   margin: 0 0 1em 0;
+  line-height: 140%;
 }
 
 div.content ul li {
