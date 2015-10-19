@@ -179,6 +179,7 @@ div.content ul li {
 }
 
 div.content ol li {
+  margin: 0 0 4px 40px;
   list-style: decimal;
 }
 
