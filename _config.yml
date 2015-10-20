@@ -1,5 +1,9 @@
-highlighter: pygments
+# conversion
 markdown: redcarpet
+highlighter: pygments
+
+# outputting
+permalink: /:year/:month/:day/:title/
 
 defaults:
   -
