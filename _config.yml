@@ -24,3 +24,6 @@ defaults:
       layout: "default"
       author: "Alex"
       title: "null"
+
+# variables
+url: avanpo.github.io
