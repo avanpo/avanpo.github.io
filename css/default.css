@@ -165,6 +165,11 @@ div.content h2 {
 
 div.content h3 {
   margin: 0 0 0.5em 0;
+  font-size: 22pt;
+}
+
+div.content h4 {
+  margin: 0 0 0.5em 0;
   font-size: 16pt;
 }
 

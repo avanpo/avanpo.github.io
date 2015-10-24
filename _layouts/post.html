@@ -6,10 +6,14 @@
 <h1>{{ page.title }}</h1>
 
 {{ content }}
+</div>
 
 {% if page.comments %}
+<div class="content">
+
+<h2>Comments</h2>
 {% include disqus.html %}
-{% endif %}
 </div>
+{% endif %}
 
 {% include footer.html %}
