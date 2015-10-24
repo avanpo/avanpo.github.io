@@ -15,6 +15,7 @@ defaults:
       author: "Alex"
       title: "null"
       archives: "active"
+      comments: false
   -
     scope:
       path: ""

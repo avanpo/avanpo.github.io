@@ -1,6 +1,7 @@
 ---
 title: "J-PAKE for .NET"
 categories: crypto
+comments: true
 ---
 
 A C# J-PAKE implementation is now available for .NET and other C# implementations.
