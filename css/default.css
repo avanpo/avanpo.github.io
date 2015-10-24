@@ -146,6 +146,10 @@ div.content {
   background: #fff;
 }
 
+div.content + div.content {
+  margin: 60px auto 0 auto;
+}
+
 div.content p.date {
   margin: 0 0 4px 0;
   font-size: 11pt;
