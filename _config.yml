@@ -1,6 +1,6 @@
 # conversion
-#markdown: redcarpet
-#highlighter: pygments
+markdown: redcarpet
+highlighter: pygments
 
 # outputting
 permalink: /:year/:month/:day/:title/
