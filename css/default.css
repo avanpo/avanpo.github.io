@@ -200,11 +200,14 @@ div.content .highlight {
 div.content code {
   color: #93a1a1;
   font-size: 10pt;
-}
-
-div.content :not(pre code) {
   border: 1px solid #002b36;
   border-radius: 2px;
+  padding: 0 2px;
+}
+
+div.content pre code {
+  border: 0;
+  padding: 0;
 }
 
 div.content span.date {
