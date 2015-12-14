@@ -10,14 +10,14 @@ Under the interrupts, we can see that `INT 0x10` without any arguments turns on 
 
 The executable is pretty short and easy to read compared to previous levels. `set_up_protection` is called, which marks pages as writeable or executable, and then turns on DEP.
 
-```
+```asm
 44e0:  0f43           clr	r15
 44e2:  b012 b444      call	#0x44b4 <mark_page_executable>
 ```
 
 The very first page (0x00) is marked executable. This makes sense, since address 0x10 has a callgate causing the software interrupt that must be executable.
 
-```assembly_x86
+```nasm
 44e6:  1b43           mov	#0x1, r11
 44e8:  0f4b           mov	r11, r15
 44ea:  b012 9c44      call	#0x449c <mark_page_writable>
