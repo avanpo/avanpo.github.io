@@ -197,13 +197,14 @@ div.content code {
   font-size: 10pt;
 }
 
-div.content pre {
+div.content .highlight {
   margin: 0 -40px 1em -40px;
   padding: 5px 40px;
 }
 
 div.content span.date {
-  width: 150px;
+  display: inline-block;
+  width: 140px;
   text-transform: uppercase;
   color: #aaa;
 }
