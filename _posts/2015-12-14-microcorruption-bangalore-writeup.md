@@ -10,7 +10,7 @@ Under the interrupts, we can see that `INT 0x10` without any arguments turns on 
 
 The executable is pretty short and easy to read compared to previous levels. `set_up_protection` is called, which marks pages as writeable or executable, and then turns on DEP.
 
-```assembly
+```
 44e0:  0f43           clr	r15
 44e2:  b012 b444      call	#0x44b4 <mark_page_executable>
 ```
