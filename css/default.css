@@ -193,14 +193,13 @@ div.content ol li {
 }
 
 div.content code {
-  background-color: #002b36;
   color: #93a1a1;
+  font-size: 10pt;
 }
 
 div.content pre {
-  margin: 0 0 1em 0;
-  padding: 2px 5px;
-  font-size: 11pt;
+  margin: 0 -40px 1em -40px;
+  padding: 5px 40px;
 }
 
 div.content span.date {
