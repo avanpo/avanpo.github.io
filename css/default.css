@@ -192,19 +192,24 @@ div.content ol li {
   list-style: decimal;
 }
 
+div.content .highlight {
+  margin: 0 -40px 1em -40px;
+  padding: 10px 40px;
+}
+
 div.content code {
   color: #93a1a1;
   font-size: 10pt;
 }
 
-div.content .highlight {
-  margin: 0 -40px 1em -40px;
-  padding: 5px 40px;
+div.content :not(pre code) {
+  border: 1px solid #002b36;
+  border-radius: 2px;
 }
 
 div.content span.date {
   display: inline-block;
-  width: 140px;
+  width: 100px;
   text-transform: uppercase;
   color: #aaa;
 }
