@@ -38,13 +38,14 @@ body {
 a:link, a:visited {
   margin: 0 -2px;
   padding: 0 2px;
-  color: #0be;
+  color: #3677a9;
   text-decoration: none;
+  border-bottom: 1px solid #8cf;
 }
 
 a:hover {
   color: #fff;
-  background-color: #0be;
+  background-color: #3677a9;
 }
 
 div.content h1 a:link, div.content h1 a:visited {
@@ -81,6 +82,7 @@ nav ul li a {
 
 nav ul li a:link, nav ul li a:visited {
   color: #aaa;
+  border-bottom: 0;
 }
 
 nav ul li.active a, nav ul li a:hover {
@@ -158,22 +160,22 @@ div.content p.date {
 }
 
 div.content h1 {
-  margin: 0 0 0.5em 0;
+  margin: 0 0 0.7em 0;
   font-size: 36pt;
 }
 
 div.content h2 {
-  margin: 0 0 0.5em 0;
+  margin: 0.2em 0 0.5em 0;
   font-size: 26pt;
 }
 
 div.content h3 {
-  margin: 0 0 0.5em 0;
+  margin: 0.2em 0 0.5em 0;
   font-size: 22pt;
 }
 
 div.content h4 {
-  margin: 0 0 0.5em 0;
+  margin: 0.2em 0 0.5em 0;
   font-size: 16pt;
 }
 
@@ -199,10 +201,6 @@ div.content .highlight {
 
 div.content code {
   font-size: 10pt;
-}
-
-div.content pre code {
-  color: #93a1a1;
 }
 
 div.content span.date {
