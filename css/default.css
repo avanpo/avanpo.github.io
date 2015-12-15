@@ -40,7 +40,7 @@ a:link, a:visited {
   padding: 0 2px;
   color: #3677a9;
   text-decoration: none;
-  border-bottom: 1px solid #3677a9;
+  border-bottom: 1px solid #5697c9;
 }
 
 a:hover {
@@ -170,17 +170,17 @@ div.content h1 {
 }
 
 div.content h2 {
-  margin: 0.5em 0 0.5em 0;
+  margin: 0.7em 0 0.5em 0;
   font-size: 26pt;
 }
 
 div.content h3 {
-  margin: 0.5em 0 0.5em 0;
+  margin: 0.7em 0 0.5em 0;
   font-size: 22pt;
 }
 
 div.content h4 {
-  margin: 0.5em 0 0.5em 0;
+  margin: 0.7em 0 0.5em 0;
   font-size: 16pt;
 }
 
@@ -200,7 +200,7 @@ div.content ol li {
 }
 
 div.content .highlight {
-  margin: 0 -40px 1em -40px;
+  margin: 1.4em -40px 1.4em -40px;
   padding: 10px 40px;
 }
 
