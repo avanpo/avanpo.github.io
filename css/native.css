@@ -1,7 +1,7 @@
-.highlight { background-color: #404040; color: #999999; }
+.highlight { background-color: #404040; color: #d0d0d0; }
 .highlight .hll { background-color: #404040 }
 .highlight .c { color: #999999; font-style: italic } /* Comment */
-.highlight .err { color: #a61717; /*background-color: #e3d2d2*/ } /* Error */
+.highlight .err { color: #d0d0d0; /*background-color: #e3d2d2*/ } /* Error */
 .highlight .g { color: #d0d0d0 } /* Generic */
 .highlight .k { color: #6ab825; font-weight: bold } /* Keyword */
 .highlight .l { color: #d0d0d0 } /* Literal */
