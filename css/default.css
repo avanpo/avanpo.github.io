@@ -40,7 +40,7 @@ a:link, a:visited {
   padding: 0 2px;
   color: #3677a9;
   text-decoration: none;
-  border-bottom: 1px solid #8cf;
+  border-bottom: 1px solid #3677a9;
 }
 
 a:hover {
@@ -52,6 +52,7 @@ div.content h1 a:link, div.content h1 a:visited {
   margin: 0;
   padding: 0;
   color: #444;
+  border-bottom: 0;
 }
 
 div.content h1 a:hover {
@@ -124,6 +125,10 @@ footer ul.icons {
 footer ul.icons li {
   display: inline;
   margin: 0 15px;
+}
+
+footer ul.icons li a {
+  border-bottom: 0;
 }
 
 footer ul.icons li a:hover {
