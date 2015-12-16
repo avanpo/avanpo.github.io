@@ -90,6 +90,6 @@ The 0A at the end is a return, which is hit during the copying loop. It returns 
 
 ## Alternatives
 
-The main thing I should have thought of was brute forcing a list of all available instructions. It turns out there is quite a lot you can do. I only ended up using a very small subset, the ones I was quickly able to glean from the instruction set documentation.
+The main thing I should have thought of was to immediately brute force a list of all available instructions. I spent a lot of time assuming I wouldn't be able to write the shellcode I needed, and looked for other options instead. It turns out there is quite a lot you can do. Even later when I realized it, I only ended up using a very small subset, the ones I was quickly able to glean from the instruction set documentation.
 
-Aside from that, since registers can be freely modified (including pc), I didn't need to use relative jumps. It certainly wasn't necessary to write past `conditional_unlock_door` and prevent `memset` from being called (a relic from my plan to execute on the heap). Judging from the hall of fame board, it probably wasn't even necessary to overwrite `conditional_unlock_door`. It might be easier to use the `login` return address, set up sr, and then jump directly to address 0x10.
+Aside from that, since registers can be freely modified (including pc), I didn't need to use relative jumps. It certainly wasn't necessary to write past `conditional_unlock_door` and prevent `memset` from being called (an artifact from my plan to execute on the heap). Judging from the hall of fame board, it probably wasn't even necessary to overwrite `conditional_unlock_door`. It might be easier to use the `login` return address, set up sr, and then jump directly to address 0x10.
