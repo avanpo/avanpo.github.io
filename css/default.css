@@ -200,8 +200,11 @@ div.content ol li {
 }
 
 div.content .highlight {
-  margin: 1.4em -40px 1.4em -40px;
-  padding: 10px 40px;
+  margin: 1.4em 0 1.4em 0;
+  padding: 5px 10px;
+  background: #f9f9f9;
+  border: 1px solid #eeeeee;
+  border-left: 3px;
 }
 
 div.content code {
