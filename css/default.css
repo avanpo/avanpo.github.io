@@ -209,6 +209,7 @@ div.content .highlight {
 
 div.content code {
   font-size: 10pt;
+  background: #f9f9f9;
 }
 
 div.content span.date {

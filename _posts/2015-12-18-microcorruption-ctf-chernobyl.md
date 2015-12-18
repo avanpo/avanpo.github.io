@@ -120,7 +120,7 @@ The sixth user in the bin is directly aligned with the following chunk's metadat
 
 The third chunk's metadata is overwritten with the location of the return address on the stack, 0x3dce, and the desired value, 0x3e8e where we will place our shellcode. Again, the 0x0e places this user in the second bin.
 
-All that's left is to add 5 more dummy users to trigger the second rehash and then tack on our shellcode at the end of our input, at address 0x3e8e. I put this at the end, in an unprocessed user since it contains null bytes and I didn't feel like designing shellcode without null bytes. Since the `free` call modifies more memory around our target (for example, modifying the `size` field), I used a jump to skip past the garbage bytes, to our familiar shellcode. It looks like this:
+All that's left is to add 5 more dummy users to trigger the second rehash and then tack on our shellcode at the end of our input, at address 0x3e8e. I put this at the end, in an unprocessed user since it contains null bytes and I didn't feel like designing shellcode without null bytes. Since the `free` call modifies more memory around our target (for example, the `size` field), I used a jump to skip past the garbage bytes, to our familiar shellcode. It looks like this:
 
 ```nasm
 jmp      $+0x8
