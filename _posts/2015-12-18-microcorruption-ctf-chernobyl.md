@@ -1,5 +1,5 @@
 ---
-title: "Microcorruption Chernobyl Writeup"
+title: "Microcorruption CTF: Chernobyl"
 categories: CTF
 comments: true
 ---
@@ -71,16 +71,16 @@ void free(void *ptr) {
     malloc_chunk *prev = p->bk;
     if (prev->size & 1 == 0) {
         prev->size += p->size + 6;
-	prev->fd = p->fd;
-	p->fd->bk = prev;
-	p = prev;
+        prev->fd = p->fd;
+        p->fd->bk = prev;
+        p = prev;
     }
 
     malloc_chunk *next = p->fd;
     if (next->size & 1 == 0) {
         p->size += next->size + 6;
         p->fd = next->fd;
-	next->fd->bk = p;
+        next->fd->bk = p;
     }
 }
 ```
@@ -98,7 +98,7 @@ Each bin has room for 5 entries. The 6th will overwrite the metadata. Unfortunat
 3. 10 other users distributed in other bins
 4. A tablespoon of shellcode
 
-The hash function is a modular hash function with 31 as the small prime. We already know that after one rehash, there will be 16 bins. So to generate collisions we can just use single bytes, incrementing by 16. To start off, let's place dummy users in each of the first 3 bins (this will also allow the first rehash to happen as intended).
+The hash function is a modular hash function with 31 as the small prime. We already know that after one rehash, there will be 16 bins. So to generate collisions we can just use single bytes, incrementing by 16. To start off, let's place 5 dummy users in each of the first 3 bins (this will also allow the first rehash to happen as intended).
 
 ```
 6e6e6e6e10203b6e6e6e6e30203b6e6e6e6e40203b6e6e6e6e50203b6e6e6e6e60203b
@@ -120,7 +120,7 @@ The sixth user in the bin is directly aligned with the following chunk's metadat
 
 The third chunk's metadata is overwritten with the location of the return address on the stack, 0x3dce, and the desired value, 0x3e8e where we will place our shellcode. Again, the 0x0e places this user in the second bin.
 
-All that's left is to add 5 more dummy users to trigger the second rehash and then tack on our shellcode at the end of our input, at address 0x3e8e. I put this at the end, in an unprocessed user since it contains null bytes and I didn't feel like designing shellcode without null bytes. Since the `free` call modifies more memory around our target (including the `size` field, I used a jump to skip past the garbage bytes, to our familiar shellcode. It looks like this:
+All that's left is to add 5 more dummy users to trigger the second rehash and then tack on our shellcode at the end of our input, at address 0x3e8e. I put this at the end, in an unprocessed user since it contains null bytes and I didn't feel like designing shellcode without null bytes. Since the `free` call modifies more memory around our target (for example, modifying the `size` field), I used a jump to skip past the garbage bytes, to our familiar shellcode. It looks like this:
 
 ```nasm
 jmp      $+0x8

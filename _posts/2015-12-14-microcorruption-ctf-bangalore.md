@@ -1,5 +1,5 @@
 ---
-title: "Microcorruption Bangalore Writeup"
+title: "Microcorruption CTF: Bangalore"
 categories: CTF
 comments: true
 ---

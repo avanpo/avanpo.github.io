@@ -1,5 +1,5 @@
 ---
-title: "Microcorruption Lagos Writeup"
+title: "Microcorruption CTF: Lagos"
 categories: CTF
 comments: true
 ---
