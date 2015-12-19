@@ -25,22 +25,32 @@ table {
 
 /* general styling */
 
+html {
+  height: 100%;
+}
+
 body {
-  font-family: "Georgia", serif;
+  min-height: 100%;
+  position: relative;
+  font-family: 'Merriweather', 'Georgia', serif;
+  font-size: 15px;
   color: #444;
-  font-size: 13pt;
   text-rendering: optimizeLegibility;
-  background: #eee;
+  background: #ffffff;
+}
+
+strong {
+  font-weight: bold;
 }
 
 /* links */
 
 a:link, a:visited {
-  margin: 0 -2px;
-  padding: 0 2px;
+  margin: -1px -2px 0 -2px;
+  padding: 1px 2px 0 2px;
   color: #3677a9;
+  font-weight: bold;
   text-decoration: none;
-  border-bottom: 1px solid #3677a9;
 }
 
 a:hover {
@@ -52,20 +62,20 @@ div.content h1 a:link, div.content h1 a:visited {
   margin: 0;
   padding: 0;
   color: #444;
-  border-bottom: 0;
 }
 
 div.content h1 a:hover {
-  color: #fff;
-  background-color: #444;
+  background: transparent;
 }
 
 /* header */
 
 nav {
-  width: 640px;
-  margin: 0 auto;
-  padding: 30px 40px;
+  width: 680px;
+  margin: 0 auto 20px auto;
+  padding: 40px 0 20px 0;
+  border-top: 5px solid #444;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 nav ul li {
@@ -74,16 +84,17 @@ nav ul li {
 }
 
 nav ul li a {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16pt;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
   line-height: 1;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 nav ul li a:link, nav ul li a:visited {
-  color: #aaa;
-  border-bottom: 0;
+  color: #ccc;
+  font-weight: normal;
 }
 
 nav ul li.active a, nav ul li a:hover {
@@ -91,35 +102,27 @@ nav ul li.active a, nav ul li a:hover {
   background-color: transparent;
 }
 
-header.banner {
-  color: #fff;
-  background: #00bfff url(/img/header.png) repeat-x bottom left;
-}
-
-header.banner h1 {
-  width: 640px;
-  margin: 0 auto;
-  padding: 0 40px;
-  font-size: 38pt;
-}
-
 /* footer */
 
 footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   padding: 30px 0;
   text-align: center;
   color: #aaa;
-  background: #eee;
 }
 
 footer p {
-  width: 720px;
+  width: 680px;
   margin: 0 auto;
+  padding: 25px 0 1em 0;
+  border-top: 1px solid #e8e8e8;
 }
 
 footer ul.icons {
-  width: 720px;
-  margin: 1em auto 0 auto;
+  width: 680px;
+  margin: 0 auto;
 }
 
 footer ul.icons li {
@@ -147,14 +150,14 @@ footer ul.icons li a:hover img {
 /* content */
 
 div.content {
-  width: 640px;
+  width: 680px;
   margin: 0 auto;
-  padding: 40px 40px 20px 40px;
+  padding: 40px 40px 180px 40px;
   background: #fff;
 }
 
 div.content + div.content {
-  margin: 60px auto 0 auto;
+  margin: -160px auto 0 auto;
 }
 
 div.content p.date {
@@ -166,27 +169,31 @@ div.content p.date {
 
 div.content h1 {
   margin: 0 0 0.7em 0;
-  font-size: 36pt;
+  font-size: 40px;
+  font-weight: 700;
 }
 
 div.content h2 {
-  margin: 0.7em 0 0.5em 0;
-  font-size: 26pt;
+  margin: 1.2em 0 0.3em 0;
+  font-size: 28px;
+  font-weight: 700;
 }
 
 div.content h3 {
-  margin: 0.7em 0 0.5em 0;
-  font-size: 22pt;
+  margin: 1.2em 0 0.3em 0;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 div.content h4 {
-  margin: 0.7em 0 0.5em 0;
-  font-size: 16pt;
+  margin: 1.2em 0 0.3em 0;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 div.content p, div.content ul, div.content ol {
   margin: 0 0 1em 0;
-  line-height: 140%;
+  line-height: 170%;
 }
 
 div.content ul li {
@@ -202,19 +209,37 @@ div.content ol li {
 div.content .highlight {
   margin: 1.4em 0 1.4em 0;
   padding: 5px 10px;
-  background: #f9f9f9;
-  border: 1px solid #eeeeee;
-  border-left: 3px solid #eeeeee;
 }
 
 div.content code {
+  margin: -2px;
+  padding: 2px;
+  font-family: 'Roboto Mono', monospace;
   font-size: 10pt;
-  background: #f9f9f9;
+  font-weight: bold;
+  color: #93a1a1;
 }
 
-div.content span.date {
+div.content .highlight code {
+  font-weight: normal;
+}
+
+/* archives list */
+
+div.content ul.archives li {
+  margin: 0 0 4px 0;
+  list-style: none;
+}
+
+div.content ul.archives span.date {
   display: inline-block;
-  width: 100px;
+  width: 92px;
   text-transform: uppercase;
   color: #aaa;
+}
+
+/* comments */
+
+div.content h2.comments {
+  margin-top: 0;
 }
