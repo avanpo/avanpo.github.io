@@ -4,7 +4,7 @@ categories: CTF
 comments: true
 ---
 
-This is my writeup for "Hollywood", the very last level on the [Microcorruption](https://microcorruption.com) CTF. Like usual, if you haven't already solved it or given it your very best shot, you should stop reading and go do that now. This level doesn't have any clever tricks, it just takes perseverence.
+This is my writeup for "Hollywood", the very last level on the [Microcorruption](https://microcorruption.com) CTF. Like usual, if you haven't already solved it or given it your very best shot, you should stop reading and go do that now. This level doesn't have any clever tricks, it just takes perseverance.
 
 ## Intro
 
@@ -38,7 +38,7 @@ for (; v != end; ++v) {
 // print out machine code, ignoring nops
 ```
 
-This gave me a better overview of the blocks of code I was stepping through. It was exceedingly tedious, but I began to notice patterns, similar blocks of instructions being executed. There were a ton of garbage instructions and patterns that made no sense. I would have really like to remove and/or substitute all of them and rerun the resulting binary, but unfortunately I had to make do. Eventually I noticed the block was writing something at a high memory address, in the 0xe000 range. It printed out 7 words, and then executed them! And the first instruction was `mov #0x2600, r5`! Finally, we're getting somewhere.
+This gave me a better overview of the blocks of code I was stepping through. It was exceedingly tedious, but I began to notice patterns, similar blocks of instructions being executed. There were a ton of garbage instructions and patterns that made no sense. I would have really liked to remove and/or substitute all of them and rerun the resulting binary, but unfortunately I had to make do. Eventually I noticed the block was writing something at a high memory address, in the 0xe000 range. It printed out 7 words, and then executed them! And the first instruction was `mov #0x2600, r5`! Finally, we're getting somewhere.
 
 It turns out that each block of code writes out one useful instruction (and a branch and some others), and then copies an existing block elsewhere and removes the initial block. Eventually, you end up with a loop that looks like this:
 
@@ -114,15 +114,14 @@ end
 # test all possible values for the first byte,
 # since the rest can be determined from the first.
 0x0000.upto(0xffff) do |w1|
-  r6 = swpb(w1)
-  w2 = r6 ^ 0xfeb1
+  w2 = swpb(w1) ^ 0xfeb1
   if (w1 + w2) & 0xffff == 0x9892
     puts "sol: #{w1.to_s(16)} #{w2.to_s(16)}"
   end
 end
 ```
 
-Unfortunately it didn't find a solution, which I found odd. I figured 4 bytes to match, with 4 bytes of input should have one solution. Unfortunately XOR doesn't play nice with addition, and the operations for a 4-byte input don't result in all linear independence of the 4 bytes being "used" as it were. So then I wrote a script to do it with 6 bytes.
+Unfortunately it didn't find a solution, which I found odd. I figured 4 bytes to match, with 4 bytes of input should have one solution. Unfortunately XOR doesn't play nice with addition, and the operations for a 4-byte input don't result in all of the linear independence of the 4 bytes being "used" as it were. So then I wrote a script to do it with 6 bytes.
 
 However, I did that wrong, because I had learned ruby that very day and had already spent way too much time on the computer. I tried brute forcing all the 4-byte options, thinking there was a mistake in my logic. I also spent a lot of time retracing my steps through the debugger and learning more about the status register and its flags. All very useful, but ultimately it was just a dumb mistake in my code! Here's the fixed script that outputs all six-byte (and probably five-byte if you wait long enough) passwords.
 
@@ -161,7 +160,7 @@ sol: 1101c57ece28
 ...
 ```
 
-Success!
+These passwords are valid. Success!
 
 ## Final thoughts
 
@@ -169,4 +168,4 @@ I really liked this CTF (and Microcorruption in general). It showed that no matt
 
 It also got me thinking about other types of obfuscation. This binary had a lot of garbage ops and very roundabout ways of getting simple things done. But it was easy to follow the entered password, and as a result you could always be sure you were still on the right path. And when the cmp instructions came, the answer was immediately evident. But what if that wasn't the case?
 
-For example, the values of the password you entered could be used to alter the very flow of the code. The flow could be a part of the validation process itself?  It would make things much more difficult to follow and keep track of. In the end, though, I suppose anything is reversible, given enough resources.
+For example, the values of the password you entered could be used to alter the very flow of the code. The flow could be a part of the validation process itself.  It would make things much more difficult to follow and keep track of. In the end though, I suppose anything is reversible -- given enough resources.
