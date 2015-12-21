@@ -125,7 +125,7 @@ end
 
 Unfortunately it didn't find a solution, which I found odd. I figured 4 bytes to match, with 4 bytes of input should have one solution. Unfortunately XOR doesn't play nice with addition, and the operations for a 4-byte input don't result in all of the linear independence of the 4 bytes being "used" as it were. So then I wrote a script to do it with 6 bytes.
 
-However, I did that wrong, because I had learned ruby that very day and had already spent way too much time on the computer. It didn't output anything! I tried brute forcing all the 4-byte options, thinking there was a mistake in my logic -- especially that for the last word (brute forcing 6-byte input would take forever). I also spent a lot of time retracing my steps through the debugger and learning more about the status register and its flags. All very useful, but ultimately it was just a dumb mistake in my code! Here's the fixed script that outputs all six-byte (and probably five-byte if you wait long enough) passwords.
+However, I did that wrong, because I had learned ruby that very day and had already spent way too much time on the computer. It didn't output anything! I tried brute forcing all the 4-byte options, thinking there was a mistake in my logic or derived equations (brute forcing 6-byte input would take forever). I also spent a lot of time retracing my steps through the debugger and learning more about the status register and its flags. All very useful, but ultimately it was just a dumb mistake in my code! Here's the fixed script that outputs all six-byte (and probably five-byte if you wait long enough) passwords.
 
 ```ruby
 # Look for 6-byte input
