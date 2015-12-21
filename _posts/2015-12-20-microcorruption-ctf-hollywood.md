@@ -67,7 +67,9 @@ add      r7, r8
 clr      r7
 ```
 
-I initially kept careful track of all the instructions concerning r7, but I think they were just another level of obfuscation, at least, until later. Since my entered password was 4 words long, I had to step through all of it like an idiot, haphazardly stepping larger portions of the code, but not too much, because I didn't want to miss important instructions and lose all of the work I had done.
+It reads 2 bytes from the password, and places them both in r4 and r6. r4 is byte swapped. Then the values in r4 and r6 are swapped (a clever XOR trick). Finally it tests the next word of the entered password. After that, it's pretty much garbage.
+
+I initially kept careful track of all the instructions concerning r7, but I think they were just another level of obfuscation, at least, until later. Since my entered password was 4 words long, I had to step through this enormous, bloated loop multiple times like an idiot, haphazardly stepping large portions of the code, but not too large, lest I miss important instructions and lose all of the work I had done.
 
 My larger steps kept getting caught in useless loops that looked like this:
 
@@ -76,7 +78,7 @@ add      #-0x1, r15
 jnz      $-0x2
 ```
 
-I realized way too late that I could just replace one instance of "fe23" with "430f" (`mov #0x0, r15`). After that, my stepping got a lot smoother. By stepping approximately 0x790 instructions at a time, I could see the instructions get written one by one.
+I realized way too late that I could just replace one instance of "fe23" with "430f" (equivalent to `mov #0x0, r15`, the primitive debugger on Microcorruption allows you to rewrite memory). After that, my stepping got a lot smoother. By stepping approximately 0x790 instructions at a time, I could see the instructions get written one by one.
 
 Eventually, after there were no more password bytes, I reached the following:
 
@@ -96,7 +98,7 @@ The instructions I omitted result in setting the CPUOFF bit in the status regist
 
 ## The password
 
-I quickly wrote a ruby script to find if a 4-byte solution existed.
+I quickly wrote a ruby script to find if a 4-byte solution existed. If you're wondering where I got the equations from, I took the cmp values, reversed the last XOR swap that would have happened between r4 and r6, and also reversed the byte swap in r4.
 
 ```ruby
 def swpb(w)
@@ -123,7 +125,7 @@ end
 
 Unfortunately it didn't find a solution, which I found odd. I figured 4 bytes to match, with 4 bytes of input should have one solution. Unfortunately XOR doesn't play nice with addition, and the operations for a 4-byte input don't result in all of the linear independence of the 4 bytes being "used" as it were. So then I wrote a script to do it with 6 bytes.
 
-However, I did that wrong, because I had learned ruby that very day and had already spent way too much time on the computer. I tried brute forcing all the 4-byte options, thinking there was a mistake in my logic. I also spent a lot of time retracing my steps through the debugger and learning more about the status register and its flags. All very useful, but ultimately it was just a dumb mistake in my code! Here's the fixed script that outputs all six-byte (and probably five-byte if you wait long enough) passwords.
+However, I did that wrong, because I had learned ruby that very day and had already spent way too much time on the computer. It didn't output anything! I tried brute forcing all the 4-byte options, thinking there was a mistake in my logic -- especially that for the last word (brute forcing 6-byte input would take forever). I also spent a lot of time retracing my steps through the debugger and learning more about the status register and its flags. All very useful, but ultimately it was just a dumb mistake in my code! Here's the fixed script that outputs all six-byte (and probably five-byte if you wait long enough) passwords.
 
 ```ruby
 # Look for 6-byte input
@@ -164,7 +166,7 @@ These passwords are valid. Success!
 
 ## Final thoughts
 
-I really liked this CTF (and Microcorruption in general). It showed that no matter what level of obfuscation, it's never a good idea to hide valuable information in the code. It takes a lot of time and perseverance, but it'll always be possible to reverse.
+I really liked this CTF (and Microcorruption in general). It showed that no matter the level of obfuscation, it's never a good idea to hide valuable information in the code. It takes a lot of time and perseverance, but it'll always be possible to reverse.
 
 It also got me thinking about other types of obfuscation. This binary had a lot of garbage ops and very roundabout ways of getting simple things done. But it was easy to follow the entered password, and as a result you could always be sure you were still on the right path. And when the cmp instructions came, the answer was immediately evident. But what if that wasn't the case?
 

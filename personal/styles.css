@@ -27,28 +27,29 @@ table {
 
 body {
   padding: 60px;
-  font-family: "Georgia", serif;
+  font-family: 'Droid Serif', 'Georgia', serif;
   color #444;
-  font-size: 12pt;
+  font-size: 14px;
   text-rendering: optimizeLegibility;
   background: #fff;
 }
 
 h1, h2, h3 {
   margin: 0 0 0.3em 0;
-  font-family: Helvetica, sans-serif;
-  font-size: 32pt;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  font-size: 38px;
   font-weight: bold;
+  letter-spacing: 1px;
   color: #59a;
 }
 
 h3 {
-  font-size: 16pt;
+  font-size: 20px;
 }
 
 p {
   margin: 0 0 1.5em 0;
-  line-height: 170%;
+  line-height: 180%;
 }
 
 p:last-child {
@@ -59,6 +60,7 @@ a:link, a:visited {
   margin: 0 -2px;
   padding: 0 2px;
   color: #59a;
+  font-weight: bold;
   text-decoration: none;
 }
 
@@ -87,7 +89,7 @@ div.top-right {
   width: 430px;
   height: 338px;
   margin: 0 0 20px 0;
-  font-size: 14pt;
+  font-size: 17px;
 }
 
 div.inner-bottom {
@@ -105,7 +107,7 @@ div.bottom-left {
   margin: 0 0 60px 80px;
   padding: 15px 20px 15px 20px;
   text-align: right;
-  font-size: 10pt;
+  font-size: 11px;
 }
 
 div.bottom-right {
@@ -114,5 +116,5 @@ div.bottom-right {
   width: 390px;
   margin: 0 0 60px 0;
   padding: 15px 20px;
-  background: #f6f6f6;
+  background: #eeeeee;
 }
