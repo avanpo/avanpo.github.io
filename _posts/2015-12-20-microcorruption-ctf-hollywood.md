@@ -40,7 +40,7 @@ for (; v != end; ++v) {
 
 This gave me a better overview of the blocks of code I was stepping through. It was exceedingly tedious, but I began to notice patterns, similar blocks of instructions being executed. There were a ton of garbage instructions and patterns that made no sense. I would have really liked to remove and/or substitute all of them and rerun the resulting binary, but unfortunately I had to make do. Eventually I noticed the block was writing something at a high memory address, in the 0xe000 range. It printed out 7 words, and then executed them! And the first instruction was `mov #0x2600, r5`! Finally, we're getting somewhere.
 
-It turns out that each block of code writes out one useful instruction (and a branch and some others), and then copies an existing block elsewhere and removes the initial block. Eventually, you end up with a loop that looks like this:
+It turns out that each block of code writes out one useful instruction (and a branch and some others), and then copies an existing block elsewhere and removes the initial block. Eventually, after tediously stepping your way through the program and keeping track of all the single useful instructions, you end up with an overall loop that looks like this:
 
 ```nasm
 add      @r5, r4
@@ -67,11 +67,11 @@ add      r7, r8
 clr      r7
 ```
 
-It reads 2 bytes from the password, and places them both in r4 and r6. r4 is byte swapped. Then the values in r4 and r6 are swapped (a clever XOR trick). Finally it tests the next word of the entered password. After that, it's pretty much garbage.
+It reads 2 bytes from the password, and places them both in r4 and r6, using add and xor respectively. r4 is byte swapped. Then the values in r4 and r6 are swapped (a clever XOR trick). Finally it tests the next word of the entered password. After that, it looks like a convoluted way to keep the loop going (if the next word exists) or move on.
 
-I initially kept careful track of all the instructions concerning r7, but I think they were just another level of obfuscation, at least, until later. Since my entered password was 4 words long, I had to step through this enormous, bloated loop multiple times like an idiot, haphazardly stepping large portions of the code, but not too large, lest I miss important instructions and lose all of the work I had done.
+Since my entered password was 4 words long, I had to step through this enormous, bloated loop multiple times like an idiot, haphazardly stepping large portions of the code, but not too large, lest I miss important instructions and lose all of the work I had done. Although it became apparent that the above was a loop, it was difficult to tell where it ended. No jump instructions were printed, the loop controls must have been hidden away in the code that decided what the next instruction to print would be. Without a proper disassembler, I didn't bother to find out how exactly that code worked.
 
-My larger steps kept getting caught in useless loops that looked like this:
+My larger steps kept getting caught in useless loops that looked like this, for very large values in r15:
 
 ```nasm
 add      #-0x1, r15
@@ -96,7 +96,7 @@ xor      #0x1, r7
 
 The instructions I omitted result in setting the CPUOFF bit in the status register if there was a 1 in the carry flag after the above instructions. So what does this mean? Both cmp instructions have to result in the zero flag being set. If not, a bit ends up being shifted into the CPUOFF flag. So we have the answer! We just have to make sure r4 and r6 contain the relevant values.
 
-## The password
+## The password(s)
 
 I quickly wrote a ruby script to find if a 4-byte solution existed. If you're wondering where I got the equations from, I took the cmp values, reversed the last XOR swap that would have happened between r4 and r6, and also reversed the byte swap in r4.
 
@@ -113,8 +113,8 @@ end
 # swpb(w1) ^ w2 = 0xfeb1 (in register r6)
 #
 # This piece of code uses these relationships to
-# test all possible values for the first byte,
-# since the rest can be determined from the first.
+# test all possible values for the first word,
+# since the next can be determined from the first.
 0x0000.upto(0xffff) do |w1|
   w2 = swpb(w1) ^ 0xfeb1
   if (w1 + w2) & 0xffff == 0x9892
@@ -166,8 +166,8 @@ These passwords are valid. Success!
 
 ## Final thoughts
 
-I really liked this CTF (and Microcorruption in general). It showed that no matter the level of obfuscation, it's never a good idea to hide valuable information in the code. It takes a lot of time and perseverance, but it'll always be possible to reverse.
+I really liked this CTF (and Microcorruption in general). It showed that no matter the level of obfuscation, it's always possible to reverse the code. It just takes a lot of time and perseverance. That said, this level would have been impossible with a better hashing function (probably).
 
-It also got me thinking about other types of obfuscation. This binary had a lot of garbage ops and very roundabout ways of getting simple things done. But it was easy to follow the entered password, and as a result you could always be sure you were still on the right path. And when the cmp instructions came, the answer was immediately evident. But what if that wasn't the case?
+It also got me thinking about other types of obfuscation. This binary had a lot of garbage ops and very roundabout ways of getting simple things done. But it was easy to follow the entered password, and as a result you could always be sure you were still on the right path. And when the cmp instructions revealed themselves, the answer was immediately evident. But what if that wasn't the case?
 
 For example, the values of the password you entered could be used to alter the very flow of the code. The flow could be a part of the validation process itself.  It would make things much more difficult to follow and keep track of. In the end though, I suppose anything is reversible -- given enough resources.
