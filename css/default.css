@@ -196,6 +196,11 @@ div.content p, div.content ul, div.content ol {
   line-height: 170%;
 }
 
+div.content img {
+  display: block;
+  margin: 1.6em auto;
+}
+
 div.content ul li {
   margin: 0 0 4px 40px;
   list-style: disc;
@@ -207,7 +212,7 @@ div.content ol li {
 }
 
 div.content .highlight {
-  margin: 1.4em 0 1.4em 0;
+  margin: 1.6em 0 1.6em 0;
   padding: 5px 10px;
 }
 
