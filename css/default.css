@@ -72,9 +72,9 @@ div.content h1 a:hover {
 
 nav {
   width: 680px;
-  margin: 0 auto 20px auto;
-  padding: 40px 0 20px 0;
-  border-top: 5px solid #444;
+  margin: 40px auto 20px auto;
+  padding: 20px 0 20px 0;
+  border-top: 1px solid #e8e8e8;
   border-bottom: 1px solid #e8e8e8;
 }
 

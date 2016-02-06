@@ -23,7 +23,7 @@ The position bounds depend on the problem characteristics. Typically the velocit
 
 The algorithm is initialized with a population of particles, each given a uniformly distributed random starting position and velocity. 
 
-During each iteration, each particles' position and velocities are updated according to the following formulas.
+During each iteration, each particles' position and velocity are updated according to the following formulas:
 
 $$ V\_i(t) = w(t) V\_i(t-1) + c\_1 r\_1 (X\_i^L - X\_i(t-1)) + c\_2 r\_2 (X^G - X\_i(t-1)) $$
 
