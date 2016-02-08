@@ -13,11 +13,11 @@ The algorithm is represented by a population (swarm) of individuals (particles) 
 
 Each particle is a candidate solution, characterized by a position vector and a velocity vector in N-dimensional space.
 
-$$ X\_i(t) = \\{ x\_{i1}(t), \ldots, x\_{iN}(t) \\} $$
+$$ X_i(t) = \{ x_{i1}(t), \ldots, x_{iN}(t) \} $$
 
-$$ V\_i(t) = \\{ v\_{i1}(t), \ldots, v\_{iN}(t) \\} $$
+$$ V_i(t) = \{ v_{i1}(t), \ldots, v_{iN}(t) \} $$
 
-The position bounds depend on the problem characteristics. Typically the velocity is bounded by the maximum of the position, in both directions. For example, if the position range is \\( [0,M] \\), then the velocity range will be \\( [-M,M] \\). In this way a particle traveling at maximum speed will traverse the entire solution space in a given dimension during one iteration.
+The position bounds depend on the problem characteristics. Typically the velocity is bounded by the maximum of the position, in both directions. For example, if the position range is $$ [0,M] $$, then the velocity range will be $$ [-M,M] $$. In this way a particle traveling at maximum speed will traverse the entire solution space in a given dimension during one iteration.
 
 ## The algorithm
 
@@ -25,17 +25,17 @@ The algorithm is initialized with a population of particles, each given a unifor
 
 During each iteration, each particles' position and velocity are updated according to the following formulas:
 
-$$ V\_i(t) = w(t) V\_i(t-1) + c\_1 r\_1 (X\_i^L - X\_i(t-1)) + c\_2 r\_2 (X^G - X\_i(t-1)) $$
+$$ V_i(t) = w(t) V_i(t-1) + c_1 r_1 (X_i^L - X_i(t-1)) + c_2 r_2 (X^G - X_i(t-1)) $$
 
-$$ X\_i(t) = V\_i(t) + X\_i(t-1) $$
+$$ X_i(t) = V_i(t) + X_i(t-1) $$
 
 The variables are defined as follows.
 
-* \\( w(t) \\) is called the inertia weight, as it controls how easily a particle's current trajectory is changed
-* \\( X\_i^L \\) is the particle's best known position
-* \\( X^G \\) is the swarm's (or a sub-swarm's) best known position
-* \\( r\_1, r\_2 \\) are uniformly distributed random numbers between 0 and 1
-* \\( c\_1, c\_2 \\) are the learning factors
+* $$ w(t) $$ is called the inertia weight, as it controls how easily a particle's current trajectory is changed
+* $$ X_i^L $$ is the particle's best known position
+* $$ X^G $$ is the swarm's (or a sub-swarm's) best known position
+* $$ r_1, r_2 $$ are uniformly distributed random numbers between 0 and 1
+* $$ c_1, c_2 $$ are the learning factors
 
 The inertia weight and learning factors are set by the practitioner, and their selection is non-trivial. Trial and error or another overlaying optimizer can be used to find the best values.
 
