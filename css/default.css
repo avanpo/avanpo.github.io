@@ -211,9 +211,8 @@ div.content ol li {
   list-style: decimal;
 }
 
-div.content .highlight {
-  margin: 1.6em 0 1.6em 0;
-  padding: 5px 10px;
+div.content pre {
+  margin: 1.7em 0 1.7em 0;
 }
 
 div.content code {
@@ -221,12 +220,7 @@ div.content code {
   padding: 2px;
   font-family: 'Roboto Mono', monospace;
   font-size: 10pt;
-  font-weight: bold;
-  color: #93a1a1;
-}
-
-div.content .highlight code {
-  font-weight: normal;
+  color: #777;
 }
 
 /* archives list */

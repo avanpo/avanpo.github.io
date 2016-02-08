@@ -1,6 +1,6 @@
 # conversion
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
 
 # outputting
 permalink: /:year/:month/:day/:title/
