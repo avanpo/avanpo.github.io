@@ -105,24 +105,12 @@ nav ul li.active a, nav ul li a:hover {
 /* footer */
 
 footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 30px 0;
+  width: 680px;
+  margin: 30px auto;
+  padding: 25px 0 1em 0;
   text-align: center;
   color: #aaa;
-}
-
-footer p {
-  width: 680px;
-  margin: 0 auto;
-  padding: 25px 0 1em 0;
   border-top: 1px solid #e8e8e8;
-}
-
-footer ul.icons {
-  width: 680px;
-  margin: 0 auto;
 }
 
 footer ul.icons li {
