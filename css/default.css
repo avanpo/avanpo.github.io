@@ -184,6 +184,10 @@ div.content p, div.content ul, div.content ol {
   line-height: 170%;
 }
 
+div.content p.preface {
+  font-style: italic;
+}
+
 div.content img {
   display: block;
   margin: 1.6em auto;
