@@ -149,7 +149,7 @@ div.content {
 }
 
 div.content + div.content {
-  margin: -160px auto 0 auto;
+  border-top: 1px solid #e8e8e8;
 }
 
 div.content p.date {
@@ -231,10 +231,4 @@ div.content ul.archives span.date {
   width: 100px;
   text-transform: uppercase;
   color: #aaa;
-}
-
-/* comments */
-
-div.content h2.comments {
-  margin-top: 0;
 }
