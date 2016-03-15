@@ -25,11 +25,10 @@ The original specification [1] used the multiplicative group of integers modulo 
 
 Other groups are used as well, see for example elliptic curve Diffie-Hellman. But unless otherwise specified, Diffie-Hellman generally refers to the multiplicative group of integers modulo $$q$$. Given this group, the Diffie-Hellman key exchange algorithm is as follows. For convenience, private values are given in red, while public values (sent freely over the wire) are in blue.
 
-$$ \definecolor{red}{RGB}{255,0,0} \definecolor{blue}{RGB}{0,0,255} $$
-* Alice and Bob agree on a prime $$\textcolor{blue}{p}$$ (note that this uniquely defines $$G$$) and generator $$\textcolor{blue}{g}$$.
-* Alice chooses a secret $$\textcolor{red}{a}$$, and sends Bob value $$\textcolor{blue}{A} = \textcolor{blue}{g}^{\textcolor{red}{a}} \mod \textcolor{blue}{p}$$.
-* Bob chooses a secret $$\textcolor{red}{b}$$, and sends Alice value $$\textcolor{blue}{B} = \textcolor{blue}{g}^{\textcolor{red}{b}} \mod \textcolor{blue}{p}$$.
-* Both compute shared secret $$\textcolor{red}{s} = \textcolor{blue}{g}^{\textcolor{red}{ab}} \mod \textcolor{blue}{p}$$.
+- Alice and Bob agree on a prime $$\definecolor{red}{RGB}{255,0,0} \definecolor{blue}{RGB}{0,0,255} \textcolor{blue}{p}$$ (note that this uniquely defines $$G$$) and generator $$\textcolor{blue}{g}$$.
+- Alice chooses a secret $$\textcolor{red}{a}$$, and sends Bob value $$\textcolor{blue}{A} = \textcolor{blue}{g}^{\textcolor{red}{a}} \mod \textcolor{blue}{p}$$.
+- Bob chooses a secret $$\textcolor{red}{b}$$, and sends Alice value $$\textcolor{blue}{B} = \textcolor{blue}{g}^{\textcolor{red}{b}} \mod \textcolor{blue}{p}$$.
+- Both compute shared secret $$\textcolor{red}{s} = \textcolor{blue}{g}^{\textcolor{red}{ab}} \mod \textcolor{blue}{p}$$.
 
 Modular exponention is cheap computationally, so it is easy for Alice to calculate $$A$$. Similarly, she can efficiently calculate $$s = B^a \mod p$$. Comparatively, an eavesdropper does not know $$a$$ or $$b$$, and therefore cannot easily find the secret $$s$$. While the security of Diffie-Hellman has never been proven equivalent to the discrete logarithm problem, computing the discrete log remains the best known attack. Therefore, barring any flaws in the implementation, an attacker's best bet is to calculate $$a$$ or $$b$$ from $$A$$ or $$B$$.
 
