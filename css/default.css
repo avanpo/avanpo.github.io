@@ -113,6 +113,10 @@ footer {
   border-top: 1px solid #e8e8e8;
 }
 
+footer p {
+  margin: 0 0 1em 0;
+}
+
 footer ul.icons li {
   display: inline;
   margin: 0 15px;
@@ -140,7 +144,7 @@ footer ul.icons li a:hover img {
 div.content {
   width: 680px;
   margin: 0 auto;
-  padding: 40px 40px 180px 40px;
+  padding: 40px;
   background: #fff;
 }
 
@@ -224,7 +228,7 @@ div.content ul.archives li {
 
 div.content ul.archives span.date {
   display: inline-block;
-  width: 98px;
+  width: 100px;
   text-transform: uppercase;
   color: #aaa;
 }

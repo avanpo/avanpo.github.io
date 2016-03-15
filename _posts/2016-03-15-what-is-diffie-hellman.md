@@ -21,11 +21,11 @@ Given $$G$$, $$g$$, and $$y$$, the discrete logarithm problem is a matter of cal
 
 ## Diffie-Hellman key exchange
 
-The original specification [1] used the multiplicative group of integers modulo a prime number, $$p$$. This group is typically denoted by $$G = (\mathbb{Z}/p\mathbb{Z})^{\times}$$. If $$p$$ is prime, the order of this group is $$p-1$$. This seems like a complex way to define a group, but it's simply the set of integers from 1 to $$p-1$$ inclusive, and integer multiplication modulo $$p$$ as the group operation. We choose the base $$g$$ to be a primitive root modulo $$p$$ (i.e. a generator of $$G$$).
+The original specification [1] used the multiplicative group of integers modulo a prime number, $$p$$. This group is typically denoted by $$G = (\mathbb{Z}/p\mathbb{Z})^{\times}$$. If $$p$$ is prime, the order of this group is $$p-1$$. This seems like a complex way to define a group, but it's simply the set of integers from 1 to $$p-1$$ inclusive, and integer multiplication modulo $$p$$ as the group operation. Note that $$p$$ uniquely defines $$G$$. We choose the base $$g$$ to be a primitive root modulo $$p$$ (i.e. a generator of $$G$$).
 
 Other groups are used as well, see for example elliptic curve Diffie-Hellman. But unless otherwise specified, Diffie-Hellman generally refers to the multiplicative group of integers modulo $$q$$. Given this group, the Diffie-Hellman key exchange algorithm is as follows. For convenience, private values are given in red, while public values (sent freely over the wire) are in blue.
 
-- Alice and Bob agree on a prime $$\definecolor{red}{RGB}{255,0,0} \definecolor{blue}{RGB}{0,0,255} \textcolor{blue}{p}$$ (note that this uniquely defines $$G$$) and generator $$\textcolor{blue}{g}$$.
+- Alice and Bob agree on a prime $$\definecolor{red}{RGB}{255,0,0} \definecolor{blue}{RGB}{0,0,255} \textcolor{blue}{p}$$ and generator $$\textcolor{blue}{g}$$.
 - Alice chooses a secret $$\textcolor{red}{a}$$, and sends Bob value $$\textcolor{blue}{A} = \textcolor{blue}{g}^{\textcolor{red}{a}} \mod \textcolor{blue}{p}$$.
 - Bob chooses a secret $$\textcolor{red}{b}$$, and sends Alice value $$\textcolor{blue}{B} = \textcolor{blue}{g}^{\textcolor{red}{b}} \mod \textcolor{blue}{p}$$.
 - Both compute shared secret $$\textcolor{red}{s} = \textcolor{blue}{g}^{\textcolor{red}{ab}} \mod \textcolor{blue}{p}$$.
