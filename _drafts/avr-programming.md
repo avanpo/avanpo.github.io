@@ -79,7 +79,7 @@ Because UARTs are asynchronous, and do not have a clock line for synchronization
 Section 20.10 of the AVR datasheet has a table of baud rate calculationsfor commonly-used clock frequencies.  Not all standard baud rates are available for every frequency—due to the discrete number of prescaler values available—so the error to the nearest standard baud rate is listed.  The range of acceptable errors is tabulated in section 20.8.3.  To configure the baud rate, avr-libc provides macros in <util/setbaud.h>.  To configure framing, we set the USART Control and Data Registers as outlined in section 20.4.  The default is 8 data bits, no  parity, and 1 stop bit.
 For the FT232R, you can set the baud rate via the Linux TTY driver.  `stty` is the command used to alter TTY settings, including baud rate and frame format.  The datasheet specifies prescaler options in section 4.2.
 
-As an example, we could write a simple program that accepts characters from the host, and sends the character back incremented by one:
+As an example, we could write a simple program that accepts characters from the host, and sends each character back incremented by one:
 
 ~~~ C
 #include <avr/io.h>
@@ -91,18 +91,20 @@ As an example, we could write a simple program that accepts characters from the 
 int main(void)
 {
     UBRR0H = UBRRH_VALUE;               // UBRR is a 12-bit prescaler register
-    UBRR0L = UBRRL_VALUE;
+    UBRR0L = UBRRL_VALUE;               // The value is determined by util/setbaud.h
     UCSR0B = _BV(TXEN0) | _BV(RXEN0);   // This enables the UART pins
     char c;
     while (1) {
-        loop_until_bit_is_set(UCSR0A, RXC0);
+        loop_until_bit_is_set(UCSR0A, RXC0);    // Wait for a character
         c = UDR0;
-        loop_until_bit_is_set(UCSR0A, UDRE0);
+        loop_until_bit_is_set(UCSR0A, UDRE0);   // Ensure the transmit buffer is empty
         UDR0 = c + 1
     }
     return 0;
 }
 ~~~
+
+We set our clock rate `F_CPU` to match the frequency of the external crystal seen in the schematic.  Then we select a baud rate that has a suitable error for both the AVR and the FTDI.
 
 ## Simulating and debugging
 
