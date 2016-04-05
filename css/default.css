@@ -18,6 +18,12 @@ blockquote, q {
   quotes: none;
 }
 
+sup {
+    vertical-align: super;
+    font-size: smaller;
+    line-height: normal;
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -41,6 +47,10 @@ body {
 
 strong {
   font-weight: bold;
+}
+
+code.overline {
+    text-decoration: overline;
 }
 
 /* links */
