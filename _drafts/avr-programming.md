@@ -108,6 +108,6 @@ We set our clock rate `F_CPU` to match the frequency of the external crystal see
 [^6]: [Arduino bootloader for ATmega328](https://github.com/arduino/Arduino/blob/master/hardware/arduino/avr/bootloaders/atmega/ATmegaBOOT_168.c)
 [^7]: [avr-libc library reference](http://nongnu.org/avr-libc/user-manual/modules.html)
 
-[*MCU]: Microcontroller Unit
-[*UART]: Universal Asynchronous Receiver/Transmitter
+*[MCU]: Microcontroller Unit
+*[UART]: Universal Asynchronous Receiver/Transmitter
 
