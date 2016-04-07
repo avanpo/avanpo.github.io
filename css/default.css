@@ -16,6 +16,9 @@ ol, ul {
 
 blockquote, q {
   quotes: none;
+}
+
+blockquote {
   margin: 1em;
   padding: 3em;
   color: #777;

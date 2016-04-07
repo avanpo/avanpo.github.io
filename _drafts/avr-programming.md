@@ -119,6 +119,8 @@ Finally, we hang on the values of `RXC0` and `UDRE0` to know when the receive an
 
 ## Simulating and debugging
 
+We can use [simavr](https://github.com/buserror/simavr) to simulate many AVR chips locally, including the ATmega328.  simavr has <abbr title="The GNU debugger">GDB</abbr> and <abbr title="Value-Change Dump">VCD</abbr> support.
+
 ## Datasheets and Documentation
 
 [^1]: [Arduino Nano schematic](https://www.arduino.cc/en/uploads/Main/ArduinoNano30Schematic.pdf)
