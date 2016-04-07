@@ -16,12 +16,20 @@ ol, ul {
 
 blockquote, q {
   quotes: none;
+  margin: 1em;
+  padding: 3em;
+  color: #777;
+  background-color: #f0f0f0;
 }
 
 sup {
-    vertical-align: super;
-    font-size: smaller;
-    line-height: normal;
+  vertical-align: super;
+  font-size: smaller;
+  line-height: normal;
+}
+
+abbr {
+  border-bottom: 1px dashed;
 }
 
 table {
@@ -50,7 +58,7 @@ strong {
 }
 
 code.overline {
-    text-decoration: overline;
+  text-decoration: overline;
 }
 
 /* links */
