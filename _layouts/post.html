@@ -5,6 +5,10 @@
 <p class="date">{{ page.date | date_to_string }}</p>
 <h1>{{ page.title }}</h1>
 
+{% if page.post_author %}
+<p class="author">Written by <a href="{{ page.post_author.link }}">{{ page.post_author.name }}</a></p>
+{% endif %}
+
 {{ content }}
 </div>
 

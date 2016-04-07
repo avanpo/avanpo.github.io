@@ -60,10 +60,6 @@ strong {
   font-weight: bold;
 }
 
-code.overline {
-  text-decoration: overline;
-}
-
 /* links */
 
 a:link, a:visited {
@@ -180,6 +176,13 @@ div.content p.date {
   color: #aaa;
 }
 
+div.content p.author {
+  display: block;
+  font-size: 11pt;
+  margin-top: -20px;
+  color: #aaa;
+}
+
 div.content h1 {
   margin: 0 0 0.7em 0;
   font-size: 40px;
@@ -239,6 +242,11 @@ div.content code {
   font-size: 10pt;
   color: #777;
 }
+
+div.content code.overline {
+  text-decoration: overline;
+}
+
 
 /* archives list */
 
