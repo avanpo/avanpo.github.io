@@ -2,7 +2,7 @@
 title: "AVR Programming with Arduino"
 post_author:
     name: "Victor van Poppelen"
-    link: "https://github.com/vvanpo"
+    link: "https://web.uvic.ca/~victorvanpoppelen/"
 categories: [avr, embedded]
 ---
 
@@ -27,7 +27,7 @@ After cross-compiling a program for AVR, the resulting binary needs to be writte
 The linker produces ELF-formatted binaries by default, but this programmer doesn't accept those.  Instead, we use Intel hex format binaries:
 
 ```shell
-avr-gcc -Wl,--oformat=ihex -o program.hex program.c
+avr-gcc -mmcu=atmega328p -Wl,--oformat=ihex -o program.hex program.c
 ```
 
 Then we tell avrdude to upload the binary:
@@ -36,7 +36,7 @@ Then we tell avrdude to upload the binary:
 avrdude -p atmega328p -c arduino -P /dev/ttyUSB0 -b 57600 -D -U flash:w:program.hex:i
 ```
 
-How do we know the baud rate should be 57600?  Well, avrdude is communicating directly with the bootloader, so all we have to do is look at the [bootloader code](https://github.com/arduino/Arduino/blob/1.6.8/hardware/arduino/avr/bootloaders/atmega/Makefile#L155).
+How do we know the baud rate should be 57600?  Well, avrdude is communicating directly with the bootloader, so all we have to do is look at the [bootloader code](https://github.com/arduino/Arduino/blob/59b5311cdffbf239d956fc97f01091006bc4aaa3/hardware/arduino/avr/bootloaders/atmega/Makefile#L155).
 
 ## The Microcontroller
 
@@ -55,11 +55,10 @@ When the MCU begins program execution, no alternative pin functions are initiali
 ```c
 #include <avr/io.h>
 
-int main(void)
+int main (void)
 {
     DDRB = 0xff;
-    while (1)
-        PORTB = 1 + PIND;
+    while (1) PORTB = 1 + PIND;
     return 0;
 }
 ```
@@ -110,7 +109,7 @@ int main(void)
         loop_until_bit_is_set(UCSR0A, RXC0);    // Wait for a character
         c = UDR0;
         loop_until_bit_is_set(UCSR0A, UDRE0);   // Ensure the transmit buffer is empty
-        UDR0 = c + 1
+        UDR0 = c + 1;
     }
     return 0;
 }
@@ -122,7 +121,7 @@ Finally, we block on the values of `RXC0` and `UDRE0` to know when the receive a
 
 ## Simulating and debugging
 
-We can use [simavr](https://github.com/buserror/simavr) to simulate many AVR chips locally, including the ATmega328.  simavr has <abbr title="The GNU debugger">GDB</abbr> and <abbr title="Value-Change Dump">VCD</abbr> support, which is especially helpful to those who don't have access to an oscilloscope.
+We can use [simavr](https://github.com/buserror/simavr) to simulate many AVR chips locally, including the ATmega328.  simavr has <abbr title="The GNU debugger">GDB</abbr> and <abbr title="Value-Change Dump">VCD</abbr> support, which is especially helpful to those who don't have access to an oscilloscope, or don't have an AVR at all.
 
 ## Datasheets and Documentation
 
