@@ -2,7 +2,7 @@
 title: "AVR Programming with Arduino"
 post_author:
     name: "Victor van Poppelen"
-    link: "https://web.uvic.ca/~victorvanpoppelen/"
+    link: "https://vvanpo.github.io/"
 categories: [avr, embedded]
 ---
 
