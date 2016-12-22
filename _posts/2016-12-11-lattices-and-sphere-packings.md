@@ -44,11 +44,7 @@ Since we're interested in maximizing packing density, let's take a look at how t
 
 $$ \theta_1\mathbf{b}_1 + \dotsb + \theta_n\mathbf{b}_n \quad (0 \leq \theta_i < 1) .$$
 
-We call this region a *fundamental parallelotope* for $$\mathcal{L}$$. We can tile $$\mathbb{R}^n$$ with this region, which contains exactly one lattice point per copy. The determinant of a matrix can be viewed as the scaling factor of the transformation described. It follows, then, that $$
-|\det \mathbf{B}|
-$$ is equal to the volume of the fundamental parallelotope (think of the identity matrix, and the $$n$$-cube fundamental parallelotope it describes. When we transform this matrix by $$\mathbf{B}$$, this cube of volume 1 is scaled by $$
-|\det \mathbf{B}|
-$$). This volume is unique to $$\mathcal{L}$$, and not dependent on the basis. All we need now is the volume and radius of an $$n$$-sphere, and we can give a formula for the density of a lattice packing. First, however, we define a metric for how close together the points of a lattice are.
+We call this region a *fundamental parallelotope* for $$\mathcal{L}$$. We can tile $$\mathbb{R}^n$$ with this region, which contains exactly one lattice point per copy. The determinant of a matrix can be viewed as the scaling factor of the transformation described. It follows, then, that $$\vert \det \mathbf{B} \vert$$ is equal to the volume of the fundamental parallelotope (think of the identity matrix, and the $$n$$-cube fundamental parallelotope it describes. When we transform this matrix by $$\mathbf{B}$$, this cube of volume 1 is scaled by $$\vert \det \mathbf{B} \vert$$). This volume is unique to $$\mathcal{L}$$, and not dependent on the basis. All we need now is the volume and radius of an $$n$$-sphere, and we can give a formula for the density of a lattice packing. First, however, we define a metric for how close together the points of a lattice are.
 
 #### Definition 4 (Minimal distance.)
 A shortest nonzero lattice vector defines the *minimal distance* of a lattice $$\mathcal{L}$$. Alternatively,
