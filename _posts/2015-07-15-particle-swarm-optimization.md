@@ -1,5 +1,5 @@
 ---
-title: "Particle Swarm Optimization"
+title: "Particle swarm optimization"
 categories: algorithms local-search
 ---
 

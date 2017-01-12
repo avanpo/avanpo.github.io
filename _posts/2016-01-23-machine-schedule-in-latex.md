@@ -1,5 +1,5 @@
 ---
-title: "Machine Schedules in LaTeX"
+title: "Machine schedules in LaTeX"
 categories: latex
 comments: true
 ---

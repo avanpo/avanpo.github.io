@@ -3,12 +3,12 @@ title: "Spring, @PathVariable, dots, and failed exception handling"
 categories: spring
 ---
 
-If you use Spring Boot to set up an endpoint using `@RequestMapping` with a `@PathVariable` at the end of the request URI, you might run into several quirks if this path variable happens to include a dot. For example, consider the following application:
+If you use Spring Boot to set up an endpoint using `@RequestMapping` with a `@PathVariable` at the end of the request URI, you might run into several quirks if this path variable happens to include a dot. For example, consider the following mapping:
 
 ```java
 @RequestMapping(value = "/api/resource/{id}", method = RequestMethod.GET)
 @ResponseBody
-public Resource getResource(@PathVariable("id") final String id) throws ResourceNotFoundException {
+public Resource getResource(@PathVariable("id") final String id) {
   final Resource resource = resourceService.findById(id);
   if (resource == null) {
     throw new ResourceNotFoundException();
@@ -38,7 +38,7 @@ A quick search on stack overflow will reveal a fix for the first problem: a rege
 @RequestMapping(value = "/api/resource/{id:.+}", method = RequestMethod.GET)
 ```
 
-This hack works, but it is far from ideal, as we would have to use it on every endpoint. How can we fix this globally? Spring thinks the characters after the last dot are a file extension, and removes them for you. Since 4.0.1, we can configure this ourselves using the [`PathMatchConfigurer`](http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/servlet/config/annotation/PathMatchConfigurer.html). We can turn off suffix pattern matching entirely, or only allow of for extensions that we explicitely register ourselves. Let's turn it off entirely:
+This hack works, but it is far from ideal, as we would have to use it on every endpoint. How can we fix this globally instead? Spring thinks the characters after the last dot are a file extension, and removes them for you. Since 4.0.1, we can configure this ourselves using the [`PathMatchConfigurer`](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/servlet/config/annotation/PathMatchConfigurer.html). We can turn off suffix pattern matching entirely, or only allow it for extensions that we explicitly register ourselves. Let's turn it off entirely:
 
 ```java
 @Configuration
@@ -51,19 +51,28 @@ public static class WebConfig extends WebMvcConfigurerAdapter {
 }
 ```
 
-That's much better. However, keep in mind that a method mapped to `/users` will no longer match to `/users.*`. In my opinion, that behaviour is unnecessary anyway.
+That's much better. However, keep in mind that a method mapped to `/users` will no longer match to `/users.*`. I prefer that behaviour, but your mileage may vary.
 
-We're still stuck with the second problem; requesting `script.js` returns 500. A bit of digging reveals the `handleResourceNotFoundException` is being called, and an `ErrorResponse` object is returned, but a `HttpMediaTypeNotAcceptableException` is being thrown somewhere in the Spring framework. This indicates Spring is unable to generate a response that is acceptable by the client. However, the client didn't specify the response format. What is going on?
+We're still stuck with the second problem; requesting `script.js` returns 500. A bit of digging reveals the `handleResourceNotFoundException` is being called as it should be, and it returns an `ErrorResponse` object. Afterwards, a `HttpMediaTypeNotAcceptableException` is thrown somewhere in the Spring framework. This indicates Spring is unable to generate a response that is acceptable by the client. However, the client didn't specify the response format. What is going on?
 
-It turns out that Spring is overriding the response format based on the "file format" of the path. In this case, given `script.js`, Spring assumes it needs to return a javascript file. It cannot convert the `ErrorResponse` object to the `application/javascript` content type, so it throws an exception.
+It turns out that Spring is overriding the response format based on the file format specified in the path. In this case, given `script.js` at the end of the path, Spring assumes it needs to return a javascript file. It cannot convert the `ErrorResponse` object to the `application/javascript` content type, so it throws an exception.
 
-We can fix this using the [`ContentNegotiatorConfigurer`](http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/servlet/config/annotation/ContentNegotiationConfigurer.html). In the same `WebConfig` class, we implement the following override:
+We can fix this using the [`ContentNegotiatorConfigurer`](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/servlet/config/annotation/ContentNegotiationConfigurer.html). In the same `WebConfig` class, we implement another override to make sure Spring no longer uses the path extension to determine the content type of the response.
 
 ```java
-@Override
-public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
-  configurer.favorPathExtension(false);
+@Configuration
+public static class WebConfig extends WebMvcConfigurerAdapter {
+  
+  @Override
+  public void configurePathMatch(final PathMatcherConfigurer configurer) {
+    configurer.setUseSuffixPatternMatch(false);
+  }
+
+  @Override
+  public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
+    configurer.favorPathExtension(false);
+  }
 }
 ```
 
-Viola, with two configuration options the mapping works as expected.
+Voila, by setting two configuration options the mapping now works as desired.

@@ -1,5 +1,5 @@
 ---
-title: "AVR Programming with Arduino"
+title: "AVR programming with Arduino"
 post_author:
     name: "Victor van Poppelen"
     link: "https://vvanpo.github.io/"
