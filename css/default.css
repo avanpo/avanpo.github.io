@@ -247,6 +247,28 @@ div.content code.overline {
   text-decoration: overline;
 }
 
+div.content table {
+  margin: 0 auto 1em auto;
+  line-height: 170%;
+}
+
+div.content th {
+  font-weight: bold;
+  padding: 0 5px;
+  border-bottom: 1px solid #777;
+}
+
+div.content th + th {
+  padding: 0 5px 0 30px;
+}
+
+div.content td {
+  padding: 0 5px;
+}
+
+div.content td + td {
+  padding: 0 5px 0 30px;
+}
 
 /* archives list */
 
