@@ -165,10 +165,6 @@ div.content {
   background: #fff;
 }
 
-div.content + div.content {
-  border-top: 1px solid #e8e8e8;
-}
-
 div.content p.date {
   margin: 0 0 4px 0;
   font-size: 11pt;
