@@ -12,7 +12,7 @@ Bouncy Castle has had a Java implementation since 2013, but its C\# project is s
 
 ### Alternatives
 
-Diffie-Hellman is another password key exchange protocol, but lacks the authentication. Constructing an authentication scheme is possible, but difficult to do correctly (like all crypto). A second alternative is SRP [2], another PAKE protocol. Its adoptation was slowed by patent encumbrance, but it appears this is no longer a problem.
+Diffie-Hellman is another key exchange protocol, but it lacks authentication. Constructing an authentication scheme is possible, but difficult to do correctly (like all crypto). A second alternative is SRP [2], another PAKE protocol. Its adoptation was slowed by patent encumbrance, but it appears this is no longer a problem.
 
 ### A Word of Warning
 
