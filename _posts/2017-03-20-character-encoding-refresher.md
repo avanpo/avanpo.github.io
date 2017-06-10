@@ -9,7 +9,7 @@ Sometimes I forget the details on different character encodings. Maybe you do to
 
 Unicode is a standard designed to facilitate consistent encoding and representation of text. Unicode encodes graphemes to code points, where a grapheme is the smallest unit of a writing system of a language. A code point is a number. So Unicode by itself is not enough to store text on a computer, since the way that the code points should be stored in memory is not defined.
 
-The codespace defined by Unicode spans `0x0` to `0x10ffff` (2^20 + 2^16 = 1,114,112 code points in total). This includes seventeen *planes* of `0xffff` codepoints. The zero plane is called the Basic Multilingual Plane, and contains characters for almost all modern languages and a large number of symbols. Plane 1, the Supplementary Multilingual Plane, includes historic scripts along with symbols for a variety of fields. The vast majority of the codespace is unassigned, leaving lots of room for additions. This happens regularly, such as the avocado emoji (&#x1f951;) which was added in 2016 with the Unicode 9.0 release.
+The codespace defined by Unicode spans 0x0 to 0x10ffff (2^20 + 2^16 = 1,114,112 code points in total). This includes seventeen *planes* of 0xffff codepoints. The zero plane is called the Basic Multilingual Plane, and contains characters for almost all modern languages and a large number of symbols. Plane 1, the Supplementary Multilingual Plane, includes historic scripts along with symbols for a variety of fields. The vast majority of the codespace is unassigned, leaving lots of room for additions. This happens regularly, such as the avocado emoji (&#x1f951;) which was added in 2016 with the Unicode 9.0 release.
 
 As previously mentioned, Unicode does not define how to store text in memory. It leaves that up to one of its implementations, such as UTF-8 or UTF-16.
 
@@ -62,7 +62,7 @@ It's a great encoding for applications that only require the English language an
 
 ### ISO-8859
 
-The ISO-8859 standards are a series of fixed length, eight bit encodings. There are sixteen of them, each a proper superset of ASCII by making use of the eight bit.
+The ISO-8859 standards are a series of fixed length, eight bit encodings. There are sixteen of them, each a proper superset of ASCII by making use of the eighth bit.
 
 The extended code points initially included a number of unused characters, in positions 0x80 to 0x9f. These ensured that if the high bit were stripped, a printable character would not suddenly turn into a control character. Later, these unused characters were supplemented with control characters from other standards.
 
@@ -70,7 +70,7 @@ The ISO-8859 standards are no longer updated, having been abandoned in favor of 
 
 #### ISO-8859-1
 
-The most widely used such standard is ISO-8859-1, also named *Latin-1 Western European*. It covers most of the languages in Western Europe (some missing a few characters), along with several African and Asian languages that happen to fit. Interpreted numberically, it is a proper subset of Unicode, but not compatible with any of the UTF encodings.
+The most widely used such standard is ISO-8859-1, also named *Latin-1 Western European*. It covers most of the languages in Western Europe (some missing a few characters), along with several African and Asian languages that happen to fit. Interpreted numerically, it is a proper subset of Unicode, but not compatible with any of the UTF encodings.
 
 ISO-8859-1 is still used on more than 5% of the web, although its usage has been steadily declining.
 
@@ -86,7 +86,9 @@ The Windows-1252 character encoding (also known as CP-1252) is similar to ISO-88
 
 Incorrect labeling of this charset as ISO-8859-1 resulted in a large number of problems, since printable characters (such as curly quotation marks and others) were replaced with boxes or other characters on non-Windows operating systems. To accomodate this, most modern browsers and e-mail clients treat ISO-8859-1 labeled text as Windows-1252. This widespread behavior became standardized in HTML5.
 
-While less than a percent of the web is labeled as Windows-1252, the HTML5 standard means that more than 6% of the web is decoded as Windows-1252. However, UTF-8 is steadily taking over.
+While less than a percent of the web is labeled as Windows-1252, the HTML5 standard means that more than 6% of the web is decoded as Windows-1252.
+
+Luckily, UTF-8 is steadily taking over.
 
 ## Examples
 
