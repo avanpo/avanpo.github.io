@@ -6,7 +6,7 @@ comments: true
 
 This is my writeup for the "Bangalore" level on the [Microcorruption](https://microcorruption.com) CTF. If you haven't already solved it or given it your best shot, you should probably stop reading and go do that first.
 
-This level introduces the concept of DEP, or Data Execution Prevention. You can read a lot about DEP elsewhere, but the gist of it is in the name -- it prevents instructions from being executed in certain areas of memory. So simply injecting and running your favorite shellcode will no longer work, if that area of memory is marked as non-executable. We will have to find a way around DEP. Let's check the Lock Manual for the specifics.
+This level introduces the concept of DEP, or Data Execution Prevention. You can read a lot about DEP elsewhere, but the gist of it is in the name---it prevents instructions from being executed in certain areas of memory. So simply injecting and running your favorite shellcode will no longer work, if that area of memory is marked as non-executable. We will have to find a way around DEP. Let's check the Lock Manual for the specifics.
 
 Under the interrupts, we can see that `INT 0x10` without any arguments turns on DEP. There doesn't appear to be a way to turn it off. `INT 0x11` marks a page as either only executable, or only writeable. It takes two arguments, the first argument being the page number, the second being 1 if writeable, 0 if executable. Okay, that sounds pretty straightforward.
 
@@ -77,7 +77,7 @@ Let's construct our input to bypass DEP:
 4141 4141 4141 4141 4141 4141 4141 4141 | ba44 | 3f00 0000 | ee3f
 ```
 
-The 16 dummy bytes are the password buffer. The next word is the `login` return address. We overwrite this in with 0x44ba in order to jump to the middle of `mark_page_executable`. The next two words are the arguments to the interrupt -- 0x003f is the page number, 0x0000 designates it as executable. The next word is the `mark_page_executable` return address. We overwrite it with 0x3fee in order to return to our buffer.
+The 16 dummy bytes are the password buffer. The next word is the `login` return address. We overwrite this in with 0x44ba in order to jump to the middle of `mark_page_executable`. The next two words are the arguments to the interrupt---0x003f is the page number, 0x0000 designates it as executable. The next word is the `mark_page_executable` return address. We overwrite it with 0x3fee in order to return to our buffer.
 
 If you try this, you'll note there is no segfault, the next (garbage) instruction 0x4141 is executed. Success! That means the first part of our buffer is now executable. You may have noticed that the sixth word of our buffer was overwritten with 0x44c6. This was the return address for the interrupt. So that limits our shellcode to 5 words. If we need more, we can simply jump to after the return address, and place our shellcode there (making sure to mark page 0x40 executable instead of 0x3f).
 
