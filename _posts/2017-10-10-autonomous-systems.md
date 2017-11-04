@@ -13,6 +13,6 @@ Traffic flowing from one autonomous system to another will often need to travers
 
 The distinction between autonomous systems helps simplify routing. Routing within an AS is controlled by internal routing protocols, and need not affect the way routes are calculated outside the network. Instead, the AS advertises a single routing policy to the rest of the world. The external routing protocol that exchanges these policies between autonomous systems uses the ASN to identify networks.
 
-The original guideline for autonomous systems in [1] explicitly states that an AS should only be used as a representation of a single routing policy. Interestingly, it also highlights the ideal situation of one prefix per AS. Looking at the internet today, some companies advertise hundreds to thousands of prefixes. IPv4 exhaustion has demolished this policy.
+The original guideline for autonomous systems in [1] explicitly states that an AS should only be used as a representation of a single routing policy. Interestingly, it also highlights the ideal scenario of one prefix per AS and suggests that this should be attainable. Looking at the internet today, some autonomous systems advertise hundreds to thousands of prefixes. IPv4 exhaustion has destroyed this guideline.
 
 [1] *Guidelines for creation, selection, and registration of an Autonomous System (AS)*. RFC 1930, 1996. [https://tools.ietf.org/html/rfc1930](https://tools.ietf.org/html/rfc1930)
