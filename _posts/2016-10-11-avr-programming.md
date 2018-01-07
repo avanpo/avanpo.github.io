@@ -10,7 +10,7 @@ categories: [avr, embedded]
 
 The Nano is a very simple board, essentially just an AVR <abbr title="Microcontroller unit">MCU</abbr> with an FTDI chip for communicating over USB.  On the top left of the schematic[^1] is the pinout of the board, and in the centre is the pinout of the AVR chip (an ATmega328 or ATmega328p)[^2].
 
-![ATmega328 schematic]({{ site.github.url }}/assets/Arduino Nano ATmega328.png){:width="100%"}
+![ATmega328 schematic]({{ site.url }}/assets/Arduino Nano ATmega328.png){:width="100%"}
 
 You can follow the pins to various components, and/or directly to the pins of the board itself.  For example, the `D0/TX` and `D1/RX` pins on the board are connected to the `PD0` and `PD1` pins of the AVR, which are the <abbr title="Universal Asynchronous Receiver/Transmitter">UART</abbr> TX and RX pins.  The schematic is confusing at first but gets simpler once you see that every label is unique, and anywhere a label appears multiple times means they are connected at those points within the board.  So, in the case of the `D0` and `D1` pins, they are connected to the AVR directly *before* the 1k resistors `RP1B` and `RP1C`, which are in turn connected to the `TXD` and `RXD` pins of the FT232RL (via the `RX` and `TX` labels, respectively).  The FT232RL chip[^3] is a USB slave to UART converter that connects to the mini-USB connector (labelled `USB-MINI-B%C`).
 
@@ -46,7 +46,7 @@ We can use avr-libc[^7] to provide basic macros and functions.  The project atte
 
 Here is the AVR pinout from the datasheet, which you can cross-reference with the Arduino schematic:
 
-![ATmega328 pinout]({{ site.github.url }}/assets/ATmega48--328 28 PDIP.png)
+![ATmega328 pinout]({{ site.url }}/assets/ATmega48--328 28 PDIP.png)
 
 The chip is configured as having 3 ''ports'': Port B (corresponding to `PBn` pins), Port C (`PCn`), and Port D (`PDn`).  The idea is that each port has 8 pins (except Port C, read *Pin Descriptions* in section 1.1) for parallel communication of bytes when configured for regular digital I/O (the default).  Within each port, each pin also has alternatively configurable functions, which correspond to the parenthesized labels.  So the UART pins, `RXD` and `TXD`, are alternative functions of the Port D pins 0 and 1.  Other alternative functions include clock inputs (`XTALn`, timers/counters and <abbr title="Pulse-Width Modulator">PWM</abbr>s (`OCnx`), external interrupts (`PCINTn`), serial protocols like SPI (`SCK`, `MISO`, `MOSI`, `SS`) and I<sup>2</sup>C, <abbr title="Analog-Digital Converter">ADC</abbr>s (`ADCn`), and more.
 
