@@ -1,5 +1,5 @@
 ---
-title: "Cryptobin"
+title: "cryptobin"
 categories: crypto ctf
 ---
 
