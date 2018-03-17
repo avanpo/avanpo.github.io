@@ -12,3 +12,5 @@ A machine that owns the target protocol address will respond with a similarly fo
 ARP caches are designed to be shortlived, so that machines taken off the network do not remain in the cache forever. When a machine is added to the network, a gratuitous ARP is sometimes sent. This is a broadcast packet whose target protocol address is itself.
 
 ARP is primarily used with IPv4. It has a number of security issues, stemming from the lack of authentication on ARP responses. The protocol itself has no mitigations for these attacks.
+
+[1] *An Ethernet Address Resolution Protocol*. RFC 826, 1982. [https://tools.ietf.org/html/rfc826](https://tools.ietf.org/html/rfc826)
