@@ -28,3 +28,7 @@ defaults:
 
 # variables
 url: https://nullset.xyz
+
+# plugins
+plugins:
+  - jekyll-feed

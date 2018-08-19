@@ -137,23 +137,17 @@ footer p {
 footer ul.icons li {
   display: inline;
   margin: 0 15px;
+  font-size: 32px;
 }
 
 footer ul.icons li a {
   border-bottom: 0;
+  color: #aaa;
 }
 
 footer ul.icons li a:hover {
+  color: #444;
   background: transparent;
-}
-
-footer ul.icons li a img {
-  width: 32px;
-  opacity: 0.3;
-}
-
-footer ul.icons li a:hover img {
-  opacity: 0.6;
 }
 
 /* content */
