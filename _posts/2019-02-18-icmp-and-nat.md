@@ -41,7 +41,7 @@ Here's what my server received:
 	0x0060:  3637
 ```
 
-The request makes its way to the server by being "translated" at each NAT level. The gateway router remembers the source address and port, and maps it to the egress address and port. For ICMP, the identifier is used as the port. So ignoring the two levels of NAT for now, in this example the gateway router translated 192.168.0.194:17076 to 8.8.8.8:17076. My server sent the response to 8.8.8.8:17076, and this was translated back correctly to allow the packet to end up at my laptop.
+The request makes its way to the server by being "translated" at each NAT level. The gateway router remembers the source address and port, and maps it to the egress address and port. For ICMP, the identifier is used as the port. In this example the gateway router translated 192.168.0.194:17076 to 8.8.8.8:17076. My server sent the response to 8.8.8.8:17076, and this was translated back correctly to allow the packet to end up at my laptop.
 
 What if I want to ping my laptop from my server? I can't ping 192.168.0.194, since it's a private address. A simple `ping 8.8.8.8` appears to work, but my laptop never receives the packet. Instead, the gateway router was responding to the requests. Let's try reusing the same identifier from before, and see if this helps. `ping` doesn't support specifying the identifier, so let's use `nping`.
 
