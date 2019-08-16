@@ -58,7 +58,7 @@ be our colon character. It's trivial to recover the key character by XORing this
 value with 0x0589. We can just look for the largest char and assume it is our
 colon.
 
-```
+```python
 key = []
 pt_pieces = []
 for s in strs:
@@ -81,7 +81,7 @@ print(''.join(map(chr, key)))
 ```
 
 I actually spent a long time looking at the plaintext before realizing it was
-just random garbage, and realizing the key was the flag!
+just random garbage, and that the key was the flag!
 
 ```sh
 $ python sol.py
