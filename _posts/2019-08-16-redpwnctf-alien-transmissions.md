@@ -80,10 +80,15 @@ pt = ''.join(map(chr, pt))
 print(''.join(map(chr, key)))
 ```
 
-I actually spent a long time looking at the plaintext before realizing it was
-just random garbage, and that the key was the flag!
+I spent a long time looking at the plaintext trying to figure out what to do
+next before realizing that the key was the flag, and that the plaintext was just
+random garbage.
+
+Running the above code:
 
 ```sh
 $ python sol.py
 flag{7ux'5_un6u3554bl3_x0r_k3y_973068}
 ```
+
+👽
