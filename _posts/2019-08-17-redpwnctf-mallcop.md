@@ -98,7 +98,7 @@ def count_border_stores(store, curr_dist, edges, son_dists, minimax_dists):
     son_dists[store] = curr_dist
     if minimax_dists[store] <= curr_dist:
         # This is a border store. A mini Max can get to this store earlier or
-	# simulatenously and block off the mall beyond this.
+	# simultaneously and block off the mall beyond this.
         return 1
     count = 0
     for next_store, step_dist in edges[store]:
