@@ -25,7 +25,7 @@ get around validation by simply canarying the data to a small fraction of your
 production instances. While this should prevent global outages, depending on the
 nature of the service it might allow frequent smaller outages that eat into your
 SLO. Proper semantic canarying might also be infeasible for data that rolls out
-at a high cadence, but it's still usually worth it to catch crashes and other
+at a high cadence, but it's still worth the effort to catch crashes and other
 immediately apparent problems.
 
 The simplest and least expensive way to validate pipeline output is by sanity
