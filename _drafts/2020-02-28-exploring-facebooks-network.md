@@ -208,7 +208,7 @@ not used as an airport code but appears to refer to Amsterdam. I've plotted the
 non-weird ones on a map (again, no promises on accuracy!). From it, we can get a
 good idea of Facebook's network topology.
 
-[img]
+![Facebook edge locations]({{ site.url }}/assets/facebook-edge-locations.png){:width="100%"}
 
 This suggests Facebook has an edge presence in 65 cities around the world, with
 by far the largest concentration of deployments in Europe. Locations in red
