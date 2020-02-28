@@ -39,7 +39,7 @@ not appear to have any PTR records. These are likely colocated with the peering
 router. Judging by the naming, they are probably simple layer 3 switches.
 
 Lastly, we end up on `edge-star-mini-shv-01-ams4.facebook.com`, which refers to
-the IP we got from Facebook's authoritative DNS server. There's lots of
+the IP we got from Facebook's authoritative DNS server. There are lots of
 interesting bits of information to unpack here, but let's start with "edge". 
 
 ## Server deployment
@@ -58,16 +58,16 @@ possible. For Facebook, this means putting racks of servers close to where they
 peer with ISPs (probably in the same building in many cases). Often, that's in
 or at least very close to a major city and therefore very close to their users.
 My traceroute landed on the very edge of their network, the latency between the
-peering router and server was neglible.
+peering router and server appeared to be neglible.
 
-A presentation[^1] from 2015 illustrates this concept. They call these
-deployments edge POPs (where POP stands for Point of Presence). According to the
-presentation, the benefits are two-fold. One, it allows them to terminate TCP
-and SSL connections much closer to the user, and thereby reduce initial latency.
-Two, they can cache static content, which probably saves an enormous amount of
-money in terms of bandwidth costs. Note that user data is probably not stored on
-the edge. Instead, edge machines will send RPCs to datacenters for that
-information.
+A presentation[^1] from 2015 illustrates this concept. They call a deployment
+like this an "edge POP" (where POP stands for Point of Presence). According to
+the presentation, the benefits are two-fold. One, it allows them to terminate
+TCP and SSL connections much closer to the user, and thereby reduce initial
+latency. Two, they can cache static content, which probably saves an enormous
+amount of money in terms of bandwidth costs. Note that user data is probably not
+stored on the edge. Instead, edge machines will send RPCs to datacenters for
+that information.
 
 I'd like to learn more, but Facebook's DNS servers keep sending me to `ams2` or
 `amt2`, which are probably two different edge POPs (possibly in different
@@ -81,7 +81,8 @@ import ipaddress
 import os
 
 # Get all FB IPv4 subnets.
-WHOIS_CMD = "whois -h whois.radb.net -- '-i origin AS32934' | grep 'route:' | awk '{print $2}'"
+WHOIS_CMD = ("whois -h whois.radb.net -- '-i origin AS32934' | grep 'route:' | "
+	     "awk '{print $2}'")
 
 # Do a reverse DNS lookup on the address.
 REVERSE_DNS_FORMAT = "dig -x %s +short"
@@ -105,7 +106,7 @@ This gave me a nice list of names to peruse (I've put the results in a
 gist[^2]). There are a lot of really interesting names in here.
 
 Since I skipped IPv6, I may be missing entire parts of Facebook's network. I
-consider this is unlikely, though.
+consider this is unlikely.
 
 ## Datacenters
 
@@ -119,7 +120,7 @@ In the list, I can find many names of the form `dr01.prn2.tfbnw.net` or
 datacenter router. The three-letter location strings do not appear to be airport
 codes in this case. Grepping for unique values, we get the following list. I've
 mapped some of them to datacenters using guesswork and ping (no promises on
-accuracy), a few are still a mystery to me.
+accuracy); a few are still a mystery to me.
 
 ```
 ash    (eastern US)
@@ -161,20 +162,21 @@ under increased load at the remaining locations.
 
 So why not build more datacenters outside the US? After all, this would probably
 improve latency for huge numbers of users. It would also reduce backbone
-bandwidth and/or transit costs. My guess is that the reasons not to are due to
-risk. A datacenter is an enormous investment, you don't want to build one in a
-country only to have the local government or energy supplier renege on your deal
-and threaten your investment. That said, Facebook is building a new datacenter
-in Singapore, so the latency and bandwidth benefits must be worthwhile. Clearly
-Singapore was the most viable location in south east Asia, having the right
-combination of political stability, infrastructure and operating costs.
+bandwidth and/or transit costs. My guess is that the reason Facebook has largely
+neglected to do this is due to risk. A datacenter is an enormous investment, you
+don't want to build one in a country only to have the local government or energy
+supplier renege on your deal and threaten your investment. That said, Facebook
+is building a new datacenter in Singapore, so the latency and bandwidth benefits
+must be worthwhile. Clearly Singapore was the most viable location in south east
+Asia, having the right combination of political stability, infrastructure and
+operating costs.
 
 There's a few more interesting things to note here. One is that there appear to
 be four `dr` devices at most datacenters, with a few exceptions (SNC only has
 two while ASH has eight, and ATN has a dangling `dr08.atn1`). Referring back to
-the presentation[^1], it appears that `shv` refers to Shiv, their L4 load
-balancer. I'm going to assume that the presence of such a name is a good
-indication of whether they serve user traffic in a location.
+the presentation[^1] and our original traceroute, it appears that `shv` refers
+to Shiv, their L4 load balancer. I'm going to assume that the presence of such a
+name is a good indication of whether they serve user traffic in a location.
 
 ```
 headers-shv-00-rprn0.facebook.com.
@@ -200,13 +202,14 @@ or that the name doesn't exist.
 ## The edge
 
 So what does the edge look like? Coming back to the original traceroute, it
-looks like I can search for peering routers and names of the form
+looks like I can search for peering routers (`pr**`) and names of the form
 `edge-star-mini-shv-[POP].facebook.com`. It turns out the peering router and
 edge Shiv locations largely overlap, while there is no overlap with the
-datacenter locations. Some of the Shiv POP names are weird, for example "amt" is
-not used as an airport code but appears to refer to Amsterdam. I've plotted the
-non-weird ones on a map (again, no promises on accuracy!). From it, we can get a
-good idea of Facebook's network topology.
+datacenter locations. Some of the Shiv POP names are weird. For example AMT is
+not used as an airport code but appears to refer to Amsterdam (why not use AMS
+with a different number?). I've plotted the non-weird ones on a map (again, no
+promises on accuracy!). From it, we can get a good idea of Facebook's network
+topology.
 
 ![Facebook edge locations]({{ site.url }}/assets/facebook-edge-locations.png){:width="100%"}
 
@@ -225,19 +228,19 @@ looked like our traceroute went through 3 layers: `asw`, `psw` and an unnamed
 layer which we might assume to be a top of rack switch. Examining further, the
 `asw` layer only exists in a handful of locations; presumably those split across
 multiple colocs. And it seems like every coloc has four `psw` switches that make
-up the fabric. These switches appear to be connected to every rack in the coloc,
-in addition to the peering routers and backbone (in the absense of an `asw`
-layer). 
+up the fabric (`psw` probably stands for spine switch). These switches are
+likely to be connected to every rack in the coloc, in addition to the peering
+routers and backbone (in the absense of an `asw` layer). 
 
 Can we guess how big an edge POP is? One proxy might be to look at the second
 (or third, in the AMS case) layer of routing. These IPs don't have PTR records,
-but we can count them anyway. Assuming a full mesh and ECMP routing across the
-racks, I count 102 for `ams4` and 114 for `amt2`. If these IPs do indeed
-correspond to top of rack switches, that number seems very high. Does Facebook
-really have on the order of hundreds of racks in Amsterdam? For comparison, New
-York has 96, Seattle 128, Boston 29 and in Lagos I get 33. Those proportions
-seem a bit skewed, especially considering that Europe has more edge POPs that
-are also closer together.
+but we can send a lot of traceroutes and count them anyway. Assuming a full mesh
+and ECMP routing across the racks, I count 102 for `ams4` and 114 for `amt2`. If
+these IPs do indeed correspond to top of rack switches, that number seems very
+high. Does Facebook really have on the order of hundreds of racks in Amsterdam?
+For comparison, New York has 96, Seattle 128, Boston 29 and in Lagos I get 33.
+Those proportions seem a bit skewed, especially considering that Europe has more
+edge POPs which are also closer together. Perhaps my assumptions are incorrect.
 
 Another thing I'm really interested in is how edge POPs connect to the
 datacenters. How does that work?
@@ -245,16 +248,17 @@ datacenters. How does that work?
 ## The backbone
 
 Facebook hosts an enormous amount of user data, which will be replicated across
-several datacenters. This necessitates a lot of data transfer between
-datacenters. To allow this, Facebook's datacenters will be connected by a
-backbone. According to an article[^5] from 2017, they actually have two: an
+several datacenters to avoid data loss. This necessitates a lot of data transfer
+between datacenters. To allow this, Facebook's datacenters will be connected by
+a backbone. According to an article[^5] from 2017, they actually have two: an
 express backbone designed for inter-datacenter traffic, and an older classic
 backbone which is used for egress traffic. These backbones will extend to the
 edge where possible, so that RPCs don't need to leave Facebook's network.
 
 Similar to before, we can find many names of the form `ae43.bb01.ams2.tfbnw.net`
-or `bb01.ams2.tfbnw.net`. The numbers after the `bb` range from 0 to 1 or 0 to 3
-depending on the location, suggesting the routers are deployed in pairs.
+or `bb01.ams2.tfbnw.net`, where `bb` almost certainly refers to a backbone
+router. The two digit numeric suffix ranges from 0 to 1 or 0 to 3 depending on
+the location, suggesting the routers are deployed in pairs.
 
 The `ae` plus number prefix is interesting. I don't see an immediate pattern to
 the numbering, but perhaps this has to do with their express backbone and its
@@ -298,7 +302,7 @@ border
 router](https://en.wikipedia.org/wiki/Open_Shortest_Path_First#Router_types)?).
 Then we ride the backbone to London and from there directly to Lagos (undersea
 cable). Lagos only appears to have `br` devices, but they seem to cleanly take
-the role of `bb` devices in other metros. Perhaps it is not necessary to have a
+the role of `bb` devices in other POPs. Perhaps it is not necessary to have a
 router here with a full internet routing table. After hitting the `br` device,
 we pass through the edge fabric until we reach a machine.
 
@@ -316,8 +320,12 @@ Compare to a similar traceroute from a VPS in Toronto.
 12  edge-star-mini-shv-01-los2.facebook.com (157.240.29.35)  180.421 ms
 ```
 
-In this case we ingressed in Toronto but didn't appear to hit a peering router. My
-best guess is that this is an Internet Exchange Point, 
+In this case we ingressed in Toronto but didn't appear to hit a peering router.
+This appears to be a different peering setup, which might explain why I didn't
+find any `pr` devices in a handful of edge POPs. How does that work? How is an
+`ar` device different from a `pr`? It appears to be connected directly to peers
+in Toronto, but also the backbone routers in New York. I can find `pr` devices
+in Toronto, but no `bb` or `br` devices. It seems like a strange setup.
 
 Interestingly, a traceroute from Toronto to Amsterdam only ingresses in
 Amsterdam.
@@ -344,25 +352,26 @@ One thing that really strikes me is the relative lack of presence outside the US
 and Europe. However, according to this source[^6], the majority of Facebook
 users are outside these areas. India has 50% more users than the US, but get by
 with only 3 edge locations! And uncacheable content like your personal and
-friend activity is almost certainly stored in a datacenter in the US or Europe.
-Half of the countries on this list don't appear to have any edge presence at
-all.
+friend activity is almost certainly served from a datacenter in the US or
+Europe. Half of the countries on this list don't appear to have any edge
+presence at all.
 
-It's strange to me that there's edge presence in BRU when there are five
+It's strange to me that there's edge presence in BRU when there are five other
 locations within a radius of a few hundred kilometers (AMS, DUS, FRA, CDG, and
-LHR), with very reliable networks in between. On the other hand, the Philippines
+LHR) with very reliable networks in between. On the other hand, the Philippines
 is probably served out of Hong Kong which is at least 1300 km away, while having
 7 times more Facebook users than the entire population of Belgium!
 
-This must come down to dollars, and I'm sure Facebook has a lot of data showing
-that lower latencies correspond to increased advertising revenue. And how much
+This must come down to dollars. I'm sure Facebook has a lot of data showing that
+lower latencies correspond to increased advertising revenue. And how much
 revenue probably varies widely depending on geography (as estimated by this
-article[^7]).
+article[^7]), meaning that an edge location in Belgium probably has better
+ROI than one in the Philippines.
 
 ### References
 
 [^1]: [A look inside Facebook's Networking Infrastructure](https://www.cs.unc.edu/xcms/wpfiles/50th-symp/Moorthy.pdf)
-[^2]: [https://gist.github.com/avanpo/5fdb11a8710dba09687a190d39d14510](https://gist.github.com/avanpo/5fdb11a8710dba09687a190d39d14510)
+[^2]: [Facebook PTR records](https://gist.github.com/avanpo/5fdb11a8710dba09687a190d39d14510)
 [^3]: [Facebook data center locations](https://baxtel.com/data-centers/facebook#datacenter-map)
 [^4]: [Facebook's US$1b data centre in Singapore to open in 2022](https://www.edb.gov.sg/en/news-and-events/insights/innovation/facebook-s-us-1b-data-centre-in-singapore-to-open-in-2022.html)
 [^5]: [Building Express Backbone: Facebook's new long-haul network](https://engineering.fb.com/data-center-engineering/building-express-backbone-facebook-s-new-long-haul-network/)
