@@ -92,6 +92,9 @@ It remains an exceptionally difficult problem!
 ## Resources
 
 [1] Gabriele Nebe and NJA Sloane. *Table of densest packings presently known*. [http://www.math.rwth-aachen.de/~Gabriele.Nebe/LATTICES/density.html](http://www.math.rwth-aachen.de/~Gabriele.Nebe/LATTICES/density.html).
+
 [2] John H Conway and NJA Sloane. *Sphere packings, lattices, and groups*. SpringerVerlag, New York, 1993.
+
 [3] Maryna Viazovska. *The sphere packing problem in dimension 8*. [https://arxiv.org/abs/1603.04246](https://arxiv.org/abs/1603.04246).
+
 [4] Henry Cohn, Abhinav Kumar, Stephen D Miller, Danylo Radchenko, Maryna Viazovska. *The sphere packing problem in dimension 24*. [https://arxiv.org/abs/1603.06518](https://arxiv.org/abs/1603.06518).
