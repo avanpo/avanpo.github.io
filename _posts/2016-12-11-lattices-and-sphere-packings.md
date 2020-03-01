@@ -85,13 +85,13 @@ So what makes $$E_8$$ and $$\Lambda_{24}$$ so special? This question has many po
 
 Mathematicians have attempted to find tight upper bounds on the center density as long as the sphere packing problem has been studied in detail. Many of these bounds have been found and improved throughout the years. While the best known packings in nearly all dimensions fall well short of these bounds, $$E_8$$ and $$\Lambda_{24}$$ were shown to come extremely close. So close, that most were convinced of their packing optimality in general, in addition to being optimal among lattice packings. Remarkably, both lattices have the property that all densest lattice packings in lower dimensions can be found in their cross-sections. For the Leech lattice, this is especially interesting, as the densest lattices in some dimensions (such as 11, 12, and 13) are not laminated lattices! Indeed, some of these dense lattices were only discovered due to the discovery of $$E_8$$ and $$\Lambda_{24}$$.
 
-Earlier this year, two papers[^3][^4] were posted that finally prove $$E_8$$ and $$\Lambda_{24}$$ to be optimal sphere packings in their respective dimensions. Although there was little doubt left, it is very nice to finally have proof, and some sense of closure. The sphere packing problem has now been solved in one, two, three, eight, and twenty-four dimensions.
+Earlier this year, two papers ([3] and [4]) were posted that finally proved $$E_8$$ and $$\Lambda_{24}$$ to be optimal sphere packings in their respective dimensions. Although there was little doubt left, it is very nice to finally have proof, and some sense of closure. The sphere packing problem has now been solved in one, two, three, eight, and twenty-four dimensions.
 
 It remains an exceptionally difficult problem!
 
 ## Resources
 
-[^1]: Gabriele Nebe and NJA Sloane. *Table of densest packings presently known*. [http://www.math.rwth-aachen.de/~Gabriele.Nebe/LATTICES/density.html](http://www.math.rwth-aachen.de/~Gabriele.Nebe/LATTICES/density.html).
-[^2]: John H Conway and NJA Sloane. *Sphere packings, lattices, and groups*. SpringerVerlag, New York, 1993.
-[^3]: Maryna Viazovska. *The sphere packing problem in dimension 8*. [https://arxiv.org/abs/1603.04246](https://arxiv.org/abs/1603.04246).
-[^4]: Henry Cohn, Abhinav Kumar, Stephen D Miller, Danylo Radchenko, Maryna Viazovska. *The sphere packing problem in dimension 24*. [https://arxiv.org/abs/1603.06518](https://arxiv.org/abs/1603.06518).
+[1] Gabriele Nebe and NJA Sloane. *Table of densest packings presently known*. [http://www.math.rwth-aachen.de/~Gabriele.Nebe/LATTICES/density.html](http://www.math.rwth-aachen.de/~Gabriele.Nebe/LATTICES/density.html).
+[2] John H Conway and NJA Sloane. *Sphere packings, lattices, and groups*. SpringerVerlag, New York, 1993.
+[3] Maryna Viazovska. *The sphere packing problem in dimension 8*. [https://arxiv.org/abs/1603.04246](https://arxiv.org/abs/1603.04246).
+[4] Henry Cohn, Abhinav Kumar, Stephen D Miller, Danylo Radchenko, Maryna Viazovska. *The sphere packing problem in dimension 24*. [https://arxiv.org/abs/1603.06518](https://arxiv.org/abs/1603.06518).
