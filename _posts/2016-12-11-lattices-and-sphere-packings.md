@@ -46,7 +46,7 @@ $$ \theta_1\mathbf{b}_1 + \dotsb + \theta_n\mathbf{b}_n \quad (0 \leq \theta_i <
 
 We call this region a *fundamental parallelotope* for $$\mathcal{L}$$. We can tile $$\mathbb{R}^n$$ with this region, which contains exactly one lattice point per copy. The determinant of a matrix can be viewed as the scaling factor of the transformation described. It follows, then, that $$\vert \det \mathbf{B} \vert$$ is equal to the volume of the fundamental parallelotope (think of the identity matrix, and the $$n$$-cube fundamental parallelotope it describes. When we transform this matrix by $$\mathbf{B}$$, this cube of volume 1 is scaled by $$\vert \det \mathbf{B} \vert$$). This volume is unique to $$\mathcal{L}$$, and not dependent on the basis. All we need now is the volume and radius of an $$n$$-sphere, and we can give a formula for the density of a lattice packing. First, however, we define a metric for how close together the points of a lattice are.
 
-#### Definition 4 (Minimal distance.)
+#### Definition 4 (Minimal distance).
 A shortest nonzero lattice vector defines the *minimal distance* of a lattice $$\mathcal{L}$$. Alternatively,
 
 $$ \lambda_1(\mathcal{L}) = \min_{\mathbf{v} \in \mathcal{L} \setminus \{\mathbf{0}\}} \| \mathbf{v} \| .$$
@@ -60,7 +60,7 @@ Often, we will leave out $$V_n$$. This is $$\delta$$, or the *center density* of
 
 The densest packing in one dimension is also the most trivial lattice there is -- the set of integers, $$\mathbb{Z}$$! It is easy to verify that this set is discrete, and also a group under addition. We can easily extend this lattice to $$n$$ dimensions, forming the integer lattice $$\mathbb{Z}^n$$. If we consider $$n$$-spheres of radius 1 (i.e. a lattice consisting of all points with even integer coordinates), we see that the center density (equal to $$2^{-n}$$) decreases rapidly with the dimension.
 
-## Lattices packings in higher dimensions
+## Lattice packings in higher dimensions
 
 Finding dense lattices in higher dimensions is no easy task. There is no standard formula or technique that leads to dense lattices in a given dimension. John Leech found his lattice in 1967 by studying binary error-correcting codes, and lifting one such code to $$\mathbb{Z}^{24}$$. By restricting the sum of the coordinates to zero modulo 4, and then sliding another copy of the resulting lattice into itself, he discovered what is now known as the Leech lattice.
 
@@ -85,12 +85,13 @@ So what makes $$E_8$$ and $$\Lambda_{24}$$ so special? This question has many po
 
 Mathematicians have attempted to find tight upper bounds on the center density as long as the sphere packing problem has been studied in detail. Many of these bounds have been found and improved throughout the years. While the best known packings in nearly all dimensions fall well short of these bounds, $$E_8$$ and $$\Lambda_{24}$$ were shown to come extremely close. So close, that most were convinced of their packing optimality in general, in addition to being optimal among lattice packings. Remarkably, both lattices have the property that all densest lattice packings in lower dimensions can be found in their cross-sections. For the Leech lattice, this is especially interesting, as the densest lattices in some dimensions (such as 11, 12, and 13) are not laminated lattices! Indeed, some of these dense lattices were only discovered due to the discovery of $$E_8$$ and $$\Lambda_{24}$$.
 
-Earlier this year, [two](https://arxiv.org/abs/1603.04246) [papers](https://arxiv.org/abs/1603.06518) were posted that finally prove $$E_8$$ and $$\Lambda_{24}$$ to be optimal sphere packings in their respective dimensions. Although there was little doubt left, it is very nice to finally have proof, and some sense of closure. The sphere packing problem has now been solved in one, two, three, eight, and twenty-four dimensions.
+Earlier this year, two papers[^3][^4] were posted that finally prove $$E_8$$ and $$\Lambda_{24}$$ to be optimal sphere packings in their respective dimensions. Although there was little doubt left, it is very nice to finally have proof, and some sense of closure. The sphere packing problem has now been solved in one, two, three, eight, and twenty-four dimensions.
 
 It remains an exceptionally difficult problem!
 
 ## Resources
 
-[1] Gabriele Nebe and NJA Sloane. *Table of densest packings presently known*. [http://www.math.rwth-aachen.de/~Gabriele.Nebe/LATTICES/density.html](http://www.math.rwth-aachen.de/~Gabriele.Nebe/LATTICES/density.html).
-
-[2] John H Conway and NJA Sloane. *Sphere packings, lattices, and groups*. SpringerVerlag, New York, 1993.
+[^1]: Gabriele Nebe and NJA Sloane. *Table of densest packings presently known*. [http://www.math.rwth-aachen.de/~Gabriele.Nebe/LATTICES/density.html](http://www.math.rwth-aachen.de/~Gabriele.Nebe/LATTICES/density.html).
+[^2]: John H Conway and NJA Sloane. *Sphere packings, lattices, and groups*. SpringerVerlag, New York, 1993.
+[^3]: Maryna Viazovska. *The sphere packing problem in dimension 8*. [https://arxiv.org/abs/1603.04246](https://arxiv.org/abs/1603.04246).
+[^4]: Henry Cohn, Abhinav Kumar, Stephen D Miller, Danylo Radchenko, Maryna Viazovska. *The sphere packing problem in dimension 24*. [https://arxiv.org/abs/1603.06518](https://arxiv.org/abs/1603.06518).
