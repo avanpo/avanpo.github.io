@@ -260,7 +260,7 @@ or `bb01.ams2.tfbnw.net`, where `bb` almost certainly refers to a backbone
 router. The two digit numeric suffix ranges from 0 to 1 or 0 to 3 depending on
 the location, suggesting the routers are deployed in pairs.
 
-The `ae` plus number prefix is interesting. I don't see an immediate pattern to
+The `ae`[^9] plus number prefix is interesting. I don't see an immediate pattern to
 the numbering, but perhaps this has to do with their express backbone and its
 four parallel topologies (which they call "planes"). The prefix is present on
 `ar`, `bb`, `br` and `dr` devices, which sounds like the structure of a
@@ -383,3 +383,6 @@ ROI than one in the Philippines.
   [2017](https://www.datacenterknowledge.com/archives/2017/03/03/will-facebook-renew-its-data-center-leases-in-ashburn)
   and
   [2019](https://www.datacenterknowledge.com/facebook/digital-realty-sweetens-facebook-s-ashburn-leases-solar-deal)), which is why I had trouble placing it.
+[^9]: musicjunky suggests the `ae` and `po` prefixes refer to logical interface
+  bundles, or AggregatedEthernet and PortChannel respectively. This makes of
+  sense, as it is common to configure separate IP addresses for each bundle.
