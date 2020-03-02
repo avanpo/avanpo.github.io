@@ -123,7 +123,7 @@ mapped some of them to datacenters using guesswork and ping (no promises on
 accuracy); a few are still a mystery to me.
 
 ```
-ash    (eastern US)
+ash -> Ashburn[^8] (Virginia)
 atn -> Altoona (Iowa)
 cln -> Clonee (Ireland)
 eag -> Eagle Mountain (Utah)
@@ -377,3 +377,9 @@ ROI than one in the Philippines.
 [^5]: [Building Express Backbone: Facebook's new long-haul network](https://engineering.fb.com/data-center-engineering/building-express-backbone-facebook-s-new-long-haul-network/)
 [^6]: [Leading countries based on number of Facebook users](https://www.statista.com/statistics/268136/top-15-countries-based-on-number-of-facebook-users/)
 [^7]: [How much Facebook makes, per user, per minute spent on Facebook](https://whotargets.me/en/much-facebook-makes-per-user-per-minute-spent-facebook/)
+[^8]: en4bz pointed out that ASH refers to Ashburn Virginia, a datacenter
+  hotspot. Facebook appears to lease rather than own capacity here (see
+  articles from
+  [2017](https://www.datacenterknowledge.com/archives/2017/03/03/will-facebook-renew-its-data-center-leases-in-ashburn)
+  and
+  [2019](https://www.datacenterknowledge.com/facebook/digital-realty-sweetens-facebook-s-ashburn-leases-solar-deal)), which is why I had trouble placing it.
