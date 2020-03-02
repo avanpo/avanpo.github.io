@@ -120,7 +120,7 @@ In the list, I can find many names of the form `dr01.prn2.tfbnw.net` or
 datacenter router. The three-letter location strings do not appear to be airport
 codes in this case. Grepping for unique values, we get the following list. I've
 mapped some of them to datacenters using guesswork and ping (no promises on
-accuracy); a few are still a mystery to me[^8]
+accuracy); a few are still a mystery to me[^8].
 
 ```
 ash -> Ashburn (Virginia)
