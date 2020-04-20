@@ -55,8 +55,4 @@ Managing complexity is hard! I don't really have any kind of point I'm trying to
 make. Hopefully this will be a short-lived issue. In the meantime, maybe Google
 will pick this up and it will help someone.
 
-[^1]: Almost. There was a result in Chinese which seemed to imply that the fix
-  was to `go install google.golang.org/protobuf/cmd/protoc-gen-go`. I had
-  dismissed it because it looked like they weren't using Bazel, and I was
-  convinced Bazel was the problem. Looking at the page more closely, it looks
-  like it does actually contain the problem and answer!
+[^1]: Almost. There was a result in Chinese which seemed to imply that the fix was to `go install google.golang.org/protobuf/cmd/protoc-gen-go`. I had dismissed it because it looked like they weren't using Bazel, and I was convinced Bazel was the problem. Looking at the page more closely, it looks like it does actually contain the problem and answer!
